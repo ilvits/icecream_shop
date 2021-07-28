@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}My shop{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preload" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"></noscript>
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+</head>
+<body class="text-red-900 bg-yellow-50">
+
+  <nav class="py-4 mb-2 bg-yellow-100 filter drop-shadow">
+    <div class="flex">
+      <a href="#!" class="mx-4">500 Эскимо</a>
+      <!-- <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+      
+      <ul class="flex mx-4 w-3/5">
+        <li class="mx-2 px-2 
+                   text-black 
+                   transition hover:bg-yellow-100 hover:text-black 
+                   rounded"><a href="/">Главная</a>
+        </li>
+        <li class="mx-2 px-2 
+                   text-black 
+                   transition hover:bg-yellow-100 hover:text-black 
+                   rounded"><a href="{% url "shop:product_list" %}">Сделать заказ</a>
+        </li>
+        <li class="mx-2 px-2 
+                   text-black 
+                   transition hover:bg-yellow-100 hover:text-black 
+                   rounded"
+                   ><a href="сontact/">Контакты</a>
+        </li>
+      </ul>
+      <ul class="flex">
+        <li class="mx-2">
+          {% with total_items=cart|length %}
+              {% if cart|length > 0 %}
+                  В корзине:
+                      {{ total_items }} наклеек{{ total_items|pluralize }}, на 
+                      {{ cart.get_total_price }} руб.
+              {% else %}
+                  (0)
+              {% endif %}
+          {% endwith %}
+        </li>
+        <li>
+          <a href="{% url "cart:cart_detail" %}" data-target="mobile" class="sidenav-trigger"><i class="material-icons">shopping_cart</i></a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+
+<!--   <ul class="sidenav" id="mobile">
+    <li><a href="/">Главная</a></li>
+    <li><a href="{% url "shop:product_list" %}"">Сделать заказ</a></li>
+    <li><a href="contact/">Контакты</a></li>
+  </ul> -->
+
+    <div class="container mx-auto mt-8 px-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+<!-- 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
+</script> -->
+</body>
+</html>
+

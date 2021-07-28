@@ -1,0 +1,12 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Наклейки{% endif %}
+{% endblock %}
+{% block content %}
+<div id="Header" class="w-2/3 mx-auto m-16 p-4 border rounded bg-yellow-100">
+    <div class="text-3xl font-serif mb-4">Истинный вкус абсолютно натурального мороженого</div>
+    <p>Хотите, чтобы Вам было вкусно, красиво и удобно? Просто попробуйте наше мороженое или торт-мороженое ручной работы, и Вы поймете, это именно то, что Вы искали — тот самый вкус! Вам захочется ещё. И ещё.</p>
+</div>
+
+{% endblock %}

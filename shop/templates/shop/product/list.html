@@ -1,0 +1,51 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+<div class="flex">
+    <div class="flex-none w-100 mx-8 hidden sm:block divide-y divide-yellow-500 " id="sidebar">
+        <h2 class="text-xl mb-2">Категории</h2>
+        <ul>
+            <li>
+                <a {% if not category %} class="text-red-400 bg-yellow-50"{% endif %} href="{% url "shop:product_list" %}">Все</a>
+            </li>
+            {% for c in categories %}
+                <li>
+                    <a {% if category.slug == c.slug %}class="text-red-400"{% endif %} href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="flex-grow divide-y divide-yellow-500 ">
+        <h2 class="text-xl mb-2">{% if category %}{{ category.name }}{% else %}Наклейки{% endif %}</h2>
+        <div class="">
+        {% for product in products %}
+        <div class="inline-flex mt-4">
+            <div class="w-44 shadow-md border rounded bg-yellow-100 p-3 m-4">
+                <div class="card-image">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img class="" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                    </a>
+                </div>
+
+                    <form class="text-center mt-4" action="{% url "cart:cart_add" product.id %}" method="post">
+                    <div class="number">
+                        <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
+                        <input name="quantity" type="number" min="0" value="0" step="25" readonly>
+                        <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                    </div>
+                            {{ cart_product_form }}
+                            {% csrf_token %}
+                            <input class="waves-effect waves-dark btn" type="submit" value="Добавить">
+                        </form>
+<!--                     ${{ product.price }} -->
+
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
