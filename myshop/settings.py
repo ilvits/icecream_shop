@@ -40,12 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Other Django apps
-     'django_cleanup.apps.CleanupConfig',
+    'django_cleanup.apps.CleanupConfig',
+    'anymail',
     # My apps
     'shop',
     'cart',
     'orders',
 ]
+
+
+EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
+
+ANYMAIL = {
+    "SENDINBLUE_API_KEY": "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",
+}
 
 
 MIDDLEWARE = [
