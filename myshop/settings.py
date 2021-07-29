@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ilvits.com', '45.148.30.212', 'localhost']
 
 CART_SESSION_ID = 'cart'
 
@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'icecream',
+        'USER': 'ilvits',
+        'PASSWORD': '5123789LviTs',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -115,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -128,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
