@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Other Django apps
     'django_cleanup.apps.CleanupConfig',
-    'anymail',
     # My apps
     'shop',
     'cart',
@@ -49,12 +48,13 @@ INSTALLED_APPS = [
 ]
 
 
-EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
-
-ANYMAIL = {
-    "SENDINBLUE_API_KEY": "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",
-}
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'ilvits@ilvits.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
