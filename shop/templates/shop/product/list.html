@@ -22,11 +22,11 @@
         <h2 class="text-xl mb-2">{% if category %}{{ category.name }}{% else %}Наклейки{% endif %}</h2>
         <div class="">
         {% for product in products %}
-        <div class="inline-flex mt-4">
-            <div class="w-full md:w-44 lg:w-44 items-center justify-between shadow-md border rounded bg-white p-3 m-4">
+        <div class="md:inline-flex lg:inline-flex m-4">
+            <div class="md:w-44 lg:w-44 shadow-md border rounded bg-white p-3 m-4">
                 <div class="card-image">
                     <a href="{{ product.get_absolute_url }}">
-                        <img loading="lazy" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                        <img class="w-full md:w-44 lg:w-44" loading="lazy" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                     </a>
                 </div>
 
