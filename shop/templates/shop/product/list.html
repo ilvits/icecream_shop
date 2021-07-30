@@ -6,12 +6,12 @@
 {% block content %}
 <div class="">
     <div class="my-8" id="categories">
-        <ul>
+        <ul class="flex">
             <li class="mx-8">
                 <a {% if not category %} class="text-red-400 bg-yellow-50"{% endif %} href="{% url "shop:product_list" %}">Все</a>
             </li>
             {% for c in categories %}
-                <li>
+                <li class="mx-8">
                     <a {% if category.slug == c.slug %}class="text-red-400"{% endif %} href="{{ c.get_absolute_url }}">{{ c.name }}</a>
                 </li>
             {% endfor %}
