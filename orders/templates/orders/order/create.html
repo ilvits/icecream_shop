@@ -1,24 +1,43 @@
 {% extends "shop/base.html" %}
+{% load widget_tweaks %}
 
-{% block title %}Checkout{% endblock %}
+{% block title %}Оформление заказа{% endblock %}
 
 {% block content %}
-    <h1 class="text-xl mb-2">Checkout</h1>
+    <h1 class="text-xl mb-2">Оформление заказа</h1>
     <div class="order-info">
-        <h3 class="text-lg">Your order</h3>
+        <h3 class="text-lg">Ваш заказ</h3>
         <ul>
             {% for item in cart %}
                 <li>
                     {{ item.quantity }}x {{ item.product.name }}
-                    <span>${{ item.total_price }}</span>
+                    <span>{{ item.total_price }} руб.</span>
                 </li>
             {% endfor %}
         </ul>
-        <p>Total: ${{ cart.get_total_price }}</p>
+        <p>Total: {{ cart.get_total_price }} руб.</p>
     </div>
-    <form action="." method="post" class="px-8 pt-6 pb-8 mb-4 rounded">
-        {{ form.as_p }}
-        <p><input type="submit" value="Place order"></p>
-        {% csrf_token %}
-    </form>
+
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% for error in field.errors %}
+                <span class="help-block">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    
+{##}
+{#    <form action="." method="post" class="px-8 pt-6 pb-8 mb-4 rounded">#}
+{#        {{ form.as_p }}#}
+{#        <p><input type="submit" value="Place order"></p>#}
+{#        {% csrf_token %}#}
+{#    </form>#}
+
+
 {% endblock %}
