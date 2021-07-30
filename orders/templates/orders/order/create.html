@@ -7,14 +7,13 @@
     <h1 class="font-bold uppercase text-2xl mb-10 text-center">Оформление заказа</h1>
     <div class="order-info">
         <h3 class="font-bold text-xl">Ваш заказ</h3>
-        <ul>
+        <div class="flex">
             {% for item in cart %}
-                <li>
-                    {{ item.quantity }}x {{ item.product.name }}
-                    <span>{{ item.total_price }} руб.</span>
-                </li>
+                <div class="w-16">
+                    {{ item.image }}
+                </div>
             {% endfor %}
-        </ul>
+        </div>
         <p>Total: {{ cart.get_total_price }} руб.</p>
     </div>
     <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
