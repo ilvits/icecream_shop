@@ -9,8 +9,8 @@
         <h3 class="font-bold text-xl">Ваш заказ</h3>
         <div class="flex">
             {% for item in cart %}
-                <div class="w-16">
-                    {{ item.image }}
+                <div>
+                    <img  class="w-16" src="{{ item.image.url }}">
                 </div>
             {% endfor %}
         </div>
