@@ -23,7 +23,7 @@
         <div class="">
         {% for product in products %}
         <div class="inline-flex mt-4">
-            <div class="w-44 shadow-md border rounded bg-yellow-100 p-3 m-4">
+            <div class="w-44 shadow-md border rounded bg-white p-3 m-4">
                 <div class="card-image">
                     <a href="{{ product.get_absolute_url }}">
                         <img class="" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
