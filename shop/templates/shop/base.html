@@ -11,7 +11,9 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="text-red-900 bg-yellow-50">
-<span class="material-icons fixed bottom-6 right-6 rounded-full p-6 bg-white">shopping_cart</span>
+    <a href="{% url "cart:cart_detail" %}">
+        <span class="material-icons fixed bottom-6 right-6 rounded-full p-4 bg-white">shopping_cart</span>
+    </a>
     <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 shadow content-center">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-4 flex flex-row items-center justify-between">
