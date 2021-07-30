@@ -36,9 +36,8 @@
                 <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="#">Контакты</a>
             </nav>
-            <a class="px-4 text-sm bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+            <a class="hidden md:inline-flex px-4 text-sm bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                href="{% url "cart:cart_detail" %}">
-            <div class="sm:flex-none">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
                         {{ total_items }} шт.
@@ -47,8 +46,6 @@
                         (0)
                     {% endif %}
                 {% endwith %}
-            </div>
-
             </a>
             <span class="material-icons">shopping_cart</span>
         </div>
