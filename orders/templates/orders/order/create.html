@@ -5,12 +5,12 @@
 
 {% block content %}
     <h1 class="font-bold uppercase text-2xl mb-10 text-center">Оформление заказа</h1>
-    <div class="wx-auto">
+    <div class="flex justify-center">
         <h3 class="font-bold text-xl">Ваш заказ</h3>
         <div class="flex">
             {% for item in cart %}
-                <div class="m-4 p-4">
-                    <img  class="w-16" src="{{ item.product.image.url }}">
+                <div class="m-2 px-2">
+                    <img class="w-16" src="{{ item.product.image.url }}">
                 </div>
             {% endfor %}
         </div>
