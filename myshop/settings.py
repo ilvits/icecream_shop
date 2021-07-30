@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Other Django apps
     'django_cleanup.apps.CleanupConfig',
+    'widget_tweaks',
     # My apps
     'shop',
     'cart',
