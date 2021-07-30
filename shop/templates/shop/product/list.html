@@ -33,7 +33,7 @@
                     <form class="text-center mt-4" action="{% url "cart:cart_add" product.id %}" method="post">
                     <div class="number">
                         <button class="number-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-</button>
-                        <input name="quantity" type="number" min="0" value="25" step="25" readonly>
+                        <input name="quantity" type="number" min="25" value="25" step="25" readonly>
                         <button class="number-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
                     </div>
                             {{ cart_product_form }}
