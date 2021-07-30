@@ -15,8 +15,8 @@
     {% with total_items=cart|length %}
         {% if cart|length > 0 %}
             <a href="{% url "cart:cart_detail" %}"
-               class="fixed bottom-6 right-6 rounded-full p-4 bg-yellow-50 border text-sm text-black">
-                    ({{ cart.get_total_price }} ₽)
+               class="fixed bottom-6 right-6 rounded-full px-4 py-2 bg-red-400 border text-xs text-white">
+                    {{ cart.get_total_price }} ₽
             </a>
         {% endif %}
     {% endwith %}
