@@ -35,19 +35,19 @@
                    href="{% url "shop:product_list" %}">Сделать заказ</a>
                 <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                    href="#">Контакты</a>
-                <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                    {% with total_items=cart|length %}
-                        {% if cart|length > 0 %}
-                            {{ total_items }} шт. {{ total_items }}
-                            ({{ cart.get_total_price }} руб.)
-                        {% else %}
-                            (0)
-                        {% endif %}
-                    {% endwith %}
-                    <span class="material-icons">shopping_cart</span>
-                </a>
             </nav>
-
+            <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+               href="{% url "cart:cart_detail" %}">
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        {{ total_items }} шт. {{ total_items }}
+                        ({{ cart.get_total_price }} руб.)
+                    {% else %}
+                        (0)
+                    {% endif %}
+                {% endwith %}
+                <span class="material-icons">shopping_cart</span>
+            </a>
         </div>
     </div>
     <div class="container mx-auto mt-8 px-4">
