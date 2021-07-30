@@ -25,7 +25,7 @@
     {% for field in form.visible_fields %}
         <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-            {{ field|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" }}
+            {{ field|add_class:"border border-gray-300 shadow p-3 w-64 rounded mb-" }}
             {% for error in field.errors %}
                 <span class="help-block">{{ error }}</span>
             {% endfor %}
