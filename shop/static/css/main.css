@@ -38,7 +38,7 @@
     border-radius: var(--cornerRad);
     box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
     padding: 3px 6px;
-    width: 130px;
+    /*width: 130px;*/
     height: 40px;
     margin: 10px;
 }
@@ -59,7 +59,7 @@
 
 .number input {
     background-color: #fffbf4;
-    border: 1px solid rgba(85, 12, 12, 0.2);
+    border: 1px solid rgba(85, 12, 12, 0.1);
     border-radius: var(--cornerRad);
 }
 
