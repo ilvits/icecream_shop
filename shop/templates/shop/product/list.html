@@ -4,11 +4,10 @@
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
-<div class="flex">
-    <div class="flex-none w-100 mx-8 hidden sm:flex" id="sidebar">
-        <h2 class="text-xl mb-2">Категории</h2>
+<div class="">
+    <div class="my-8" id="categories">
         <ul>
-            <li>
+            <li class="mx-8">
                 <a {% if not category %} class="text-red-400 bg-yellow-50"{% endif %} href="{% url "shop:product_list" %}">Все</a>
             </li>
             {% for c in categories %}
