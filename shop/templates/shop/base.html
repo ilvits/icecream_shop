@@ -32,7 +32,7 @@
                href="{% url "cart:cart_detail" %}">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
-                        {{ total_items }} шт. {{ total_items }}
+                        {{ total_items }} шт.
                         ({{ cart.get_total_price }} руб.)
                     {% else %}
                         (0)
