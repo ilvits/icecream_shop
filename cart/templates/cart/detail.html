@@ -5,8 +5,8 @@
 {% endblock %}
 {% block content %}
     <h1 class="font-bold uppercase text-2xl mb-10 text-center">Ваша корзина</h1>
-    <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
-    <table class="w-full" >
+    <div class="md:w-3/4 mx-auto lg:w-1/2">
+    <table class="w-full bg-white p-10 rounded-lg shadow" >
         <thead>
         <tr class="text-left">
             <th class="w-28 p-2 text-center"><span class="material-icons">image</span></th>
@@ -46,12 +46,14 @@
         </tr>
         </tbody>
     </table>
-    <p class="text-right">
-        <a href="{% url "shop:product_list" %}" class="button light">Продолжить покупки</a>
-        <a href="{% url "orders:order_create" %}" class="button">
-            Оформить
-        </a>
-    </p>
+    <div class="flex justify-between w-full p-10">
+        <div class="">
+            <a href="{% url "shop:product_list" %}" class="button light">Продолжить покупки</a>
+        </div>
+        <div class="">
+            <a href="{% url "orders:order_create" %}" class="button">Оформить</a>
+        </div>
+    </div>
     </div>
 
 {% endblock %}
