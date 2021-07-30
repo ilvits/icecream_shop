@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 <div class="flex">
-    <div class="flex-none w-100 mx-8 hidden sm:block" id="sidebar">
+    <div class="flex-none w-100 mx-8 hidden sm:flex" id="sidebar">
         <h2 class="text-xl mb-2">Категории</h2>
         <ul>
             <li>
@@ -23,7 +23,7 @@
         <div class="">
         {% for product in products %}
         <div class="inline-flex mt-4">
-            <div class="w-full md:w-44 lg:w-44 shadow-md border rounded bg-white p-3 m-4">
+            <div class="w-full md:w-44 lg:w-44 items-center justify-between shadow-md border rounded bg-white p-3 m-4">
                 <div class="card-image">
                     <a href="{{ product.get_absolute_url }}">
                         <img loading="lazy" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
