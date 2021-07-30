@@ -28,7 +28,15 @@
                     </svg>
                 </button>
             </div>
-            <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+                   href="#">Главная</a>
+                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+                   href="{% url "shop:product_list" %}">Сделать заказ</a>
+                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+                   href="#">Контакты</a>
+            </nav>
+            <a class="px-4 text-sm bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                href="{% url "cart:cart_detail" %}">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
@@ -40,15 +48,6 @@
                 {% endwith %}
                 <span class="material-icons">shopping_cart</span>
             </a>
-            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
-                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
-                   href="#">Главная</a>
-                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
-                   href="{% url "shop:product_list" %}">Сделать заказ</a>
-                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
-                   href="#">Контакты</a>
-            </nav>
-
         </div>
     </div>
     <div class="container mx-auto mt-8 px-4">
