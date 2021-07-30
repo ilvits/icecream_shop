@@ -10,7 +10,7 @@ def order_created(order_id):
     """
     order = Order.objects.get(id=order_id)
     subject = 'Заказ номер {}'.format(order_id)
-    message = 'Дорогой {}, \n\nВы успешно разместили заказ.\
+    message = 'Здравствуйте, {}, \n\nВы успешно разместили заказ.\
                 Номер Вашего заказа: {}.'.format(order.first_name, order_id)
     mail_sent = send_mail(subject, message, 'admin@ilvits.com', [order.email])
     return mail_sent
