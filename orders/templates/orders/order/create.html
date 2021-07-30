@@ -17,28 +17,29 @@
         </ul>
         <p>Total: {{ cart.get_total_price }} руб.</p>
     </div>
+    <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
     <form action="." method="post" class="px-8 pt-6 pb-8 mb-4 rounded">
+
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
         {% endfor %}
 
         {% for field in form.visible_fields %}
-        <div class="form-group">
+        <div class="mb-5">
             <label for="{{ field.id_for_label }}" class="block mb-2 font-bold text-gray-600">
                 {{ field.label }}
             </label>
-            {%  render_field field|add_class:"border border-gray-300 shadow p-3 w-80 rounded mb-" placeholder=field.label %}
+            {%  render_field field|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" placeholder=field.label %}
             {% for error in field.errors %}
                 <span class="text-sm text-red-400 mt-2">{{ error }}</span>
             {% endfor %}
         </div>
-
     {% endfor %}
         <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">
             Submit
         </button>
     </form>
-
+    </div>
 {##}
 {#    <form action="." method="post" class="px-8 pt-6 pb-8 mb-4 rounded">#}
 {#        {{ form.as_p }}#}
