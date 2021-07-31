@@ -5,12 +5,11 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}My shop{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{% static "css/main.css" %}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
-<body class="text-red-900 bg-yellow-50">
+<body class="font-sans font-extralight text-red-900">
     <div class="md:hidden">
         {% with total_items=cart|length %}
             {% if cart|length > 0 %}
@@ -22,7 +21,7 @@
         {% endwith %}
     </div>
 
-    <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 shadow content-center">
+    <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 shadow-md content-center">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-4 flex flex-row items-center justify-between">
                 <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
@@ -38,26 +37,28 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
-                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+            <nav :class="{'flex': open, 'hidden': !open}" class="font-light flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="#">Главная</a>
-                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+                <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="{% url "shop:product_list" %}">Сделать заказ</a>
-                <a class="px-4 py-2 mt-2 text-md font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+                <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="#">Контакты</a>
             </nav>
-            <a class="hidden md:inline-flex px-4 text-sm bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
+            <div class="hidden md:inline-flex pl-4 pr-2 text-sm md:mt-0 md:ml-4"
                href="{% url "cart:cart_detail" %}">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
                         {{ total_items }} шт.
-                        ({{ cart.get_total_price }} руб.)
-                    {% else %}
-                        (0)
+                        ({{ cart.get_total_price }}₽)
                     {% endif %}
                 {% endwith %}
+            </div>
+            <a href="{% url "cart:cart_detail" %}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+</svg>
             </a>
-            <span class="material-icons hidden md:inline-flex">shopping_cart</span>
         </div>
     </div>
     <div class="container mx-auto mt-8 px-4">
@@ -66,4 +67,3 @@
     </div>
 </body>
 </html>
-

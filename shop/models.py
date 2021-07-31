@@ -24,7 +24,8 @@ class Product(models.Model):
     name        = models.CharField(max_length=255)
     slug        = models.CharField(max_length=255)
     description = models.TextField(blank = True)
-    image       = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
+    image       = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=False)
+    image_p     = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
     price       = models.DecimalField(max_digits=10, decimal_places=0)
     stock       = models.PositiveIntegerField()
     available   = models.BooleanField(default=True)
@@ -33,8 +34,8 @@ class Product(models.Model):
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'Мороженое'
-        verbose_name_plural = 'Мороженое'
+        verbose_name = 'Наклейка'
+        verbose_name_plural = 'Наклейки'
         index_together = (('id', 'slug'),)
 
     def __str__(self):

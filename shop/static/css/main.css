@@ -10,17 +10,14 @@
     /*float: right;*/
     color: var(--secoColor);
     background-color: #ffeede;
-    border: 1px solid rgba(85, 12, 12, 0.2);
     border-radius: var(--cornerRad);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
     padding: 3px 6px;
-    /*width: 130px;*/
     height: 40px;
     margin: 10px;
 }
 
 .button:active {
-  transform: translate3d(1px,1px,0px);
+    transform: translate3d(1px,1px,0px);
     box-shadow: none;
 }
 
@@ -29,32 +26,30 @@
     position: relative;
     width: 130px;
     margin: 0 10px;
-    border: none;
 }
 
 .number input {
-    background-color: #fffbf4;
-    border: 1px solid rgba(85, 12, 12, 0.1);
-    border-radius: var(--cornerRad);
+    background-color: #f7cca5;
+    /* border: 1px solid rgba(85, 12, 12, 0.1); */
+    /* border-radius: var(--cornerRad); */
 }
 
 
 .number  input .button:active {
-  transform: translate3d(1px,1px,0px);
+    transform: translate3d(1px,1px,0px);
 }
 
 
 
 .number input[type="number"] {
-    background-color: var(--);
-    border: none;
+    /* border: none; */
     display: block;
     height: 30px;
     line-height: 25px;
     width: 100%;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     text-align: center;
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
@@ -71,27 +66,18 @@ input[type="number"]:focus {
 }
 
 .number-minus {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    bottom: 1px;
-    width: 30px;
-    padding: 0;
-    display: block;
-    text-align: center;
-    background-color: #ffeede;
-    border: 1px solid rgba(85, 12, 12, 0.2);
-    border-radius: var(--cornerRad);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
-    font-size: 16px;
-    font-weight: 600;
+    /* position: absolute; */
+    /* top: 1px; */
+    /* left: 1px; */
+    /* bottom: 1px; */
+    /* width: 30px; */
+    /* padding: 0; */
+    /* display: block; */
+    /* text-align: center; */
+    /* background-color: #ffeede; */
+    /* font-size: 16px; */
+    /* font-weight: 600; */
 }
-
-.number-minus:active {
-  transform: translate3d(1px,1px,0px);
-  box-shadow: none;
-}
-
 
 .number-plus {
     position: absolute;
@@ -102,15 +88,7 @@ input[type="number"]:focus {
     padding: 0;
     display: block;
     text-align: center;
-    background-color: #ffeede;
-    border: 1px solid rgba(85, 12, 12, 0.2);
-    border-radius: var(--cornerRad);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+    /* background-color: #ffeede; */
     font-size: 16px;
     font-weight: 600;
-}
-
-.number-plus:active {
-  transform: translate3d(1px,1px,0px);
-  box-shadow: none;
 }
