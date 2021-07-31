@@ -29,14 +29,14 @@
                 </div>
 
                 <form class="text-center mt-4" action="{% url "cart:cart_add" product.id %}" method="post">
-                    <div class="number rounded-xl border">
-                        <button class="absolute block top-0.5" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
+                    <div class="number">
+                        <button class="w-1/4 rounded-l-full" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
                             </svg>
                         </button>
-                        <input clsss="w-full" name="quantity" type="number" min="25" value="25" step="25" readonly>
-                        <button class="absolute block top-0.5 right-1" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                        <input clsss="flex w-2/4 rounded-full" name="quantity" type="number" min="25" value="25" step="25" readonly>
+                        <button class="w-1/4 right-1 rounded-r-full" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
