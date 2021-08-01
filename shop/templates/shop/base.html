@@ -28,7 +28,7 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{'flex': open, 'hidden': !open}" class="w-64 absolute md:static right-4 top-16 rounded shadow-lg border-t border-gray-50 md:border-none md:shadow-none font-light flex-col flex-grow text-right pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
+            <nav x-show.transition.origin.top.right="open" @click.away="open = false" :class="{'flex': open, 'hidden': !open}" class="w-64 absolute md:static right-4 top-16 rounded shadow-lg border-t border-gray-50 md:border-none md:shadow-none font-light flex-col flex-grow text-right pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
                 <a class="px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="#">Главная</a>
                 <a class="px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
