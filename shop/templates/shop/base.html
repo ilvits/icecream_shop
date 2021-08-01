@@ -10,16 +10,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="font-sans font-extralight text-red-900 ">
-    <div class="md:hidden">
-        {% with total_items=cart|length %}
-            {% if cart|length > 0 %}
-                <a href="{% url "cart:cart_detail" %}"
-                   class="z-50 fixed bottom-6 right-6 rounded-full px-6 py-1 bg-red-400 border text-lg md:text-sm text-white font-light">
-                        {{ cart.get_total_price }} ₽
-                </a>
-            {% endif %}
-        {% endwith %}
-    </div>
+
 
     <div class="w-full h-14 md:h-16 text-gray-700 bg-white shadow-md fixed content-center top-0 bg-white z-50 backdrop-filter backdrop-blur-xl bg-opacity-40">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
@@ -37,7 +28,7 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{'flex': open, 'hidden': !open}" class="font-light flex-col flex-grow text-right pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+            <nav :class="{'flex': open, 'hidden': !open}" class="font-light flex-col flex-grow text-right pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-white">
                 <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="#">Главная</a>
                 <a class="px-4 py-2 mt-2 text-md bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"

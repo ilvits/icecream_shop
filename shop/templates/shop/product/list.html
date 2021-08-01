@@ -4,6 +4,16 @@
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
+    <div class="md:hidden">
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+                <a href="{% url "cart:cart_detail" %}"
+                   class="z-50 fixed bottom-6 right-6 rounded-full px-6 py-1 bg-red-400 border text-lg md:text-sm text-white font-light">
+                        {{ cart.get_total_price }} ₽
+                </a>
+            {% endif %}
+        {% endwith %}
+    </div>
 <div class="">
     <div class="" id="categories">
         <h2 class="text-3xl text-center mb-4">{% if category %}{{ category.name }}{% else %}Наклейки{% endif %}</h2>
