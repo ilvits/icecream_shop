@@ -12,19 +12,14 @@
 <body class="font-sans font-extralight text-red-900 ">
 
 
-    <div class="w-full h-14 md:h-16 text-gray-700 bg-white shadow-md fixed content-center top-0 z-50 backdrop-filter backdrop-blur-md bg-opacity-60">
+    <div class="w-full h-10 md:h-14 text-gray-700 bg-white shadow-md fixed content-center top-0 z-50 backdrop-filter backdrop-blur-md bg-opacity-60">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-            <div class="p-4 flex flex-row items-center justify-between">
-                <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+            <div class="p-2 md:p-4 flex flex-row items-center justify-between">
+                <a href="/" class="text-lg font-semibold tracking-widest text-gray-900 uppercase">
                     500 Эскимо</a>
                 <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                        <path x-show="!open" fill-rule="evenodd"
-                              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                              clip-rule="evenodd"></path>
-                        <path x-show="open" fill-rule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                              clip-rule="evenodd"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
@@ -53,7 +48,7 @@
             </a>
         </div>
     </div>
-    <div class="container mx-auto mt-20 px-4">
+    <div class="container mx-auto mt-14 md:mt-20 px-4">
         {% block content %}
         {% endblock %}
     </div>
