@@ -32,7 +32,7 @@
     <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6">
         {% for product in products %}
             <div class="md:w-44 lg:w-44 rounded bg-white p-2 m-4 border-t border-gray-50" style="box-shadow: 4px 4px 20px rgba(0, 0, 0, .05);">
-                <div class="card-image h-full md:h-40">
+                <div class="card-image h-full w-32 md:w-full md:h-40">
                     <a href="{{ product.get_absolute_url }}">
                         <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44" loading="lazy" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                     </a>
@@ -45,7 +45,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
                             </svg>
                         </button>
-                        <input clsss="flex rounded-full text-lg bg-red-50" name="quantity" type="number" min="25" value="25" step="25" readonly>
+                        <input class="flex text-lg bg-red-50 w-16 text-center appearance-none" name="quantity" type="number" min="25" value="25" step="25" readonly>
                         <button class="flex rounded-r-full bg-red-50 pr-2" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
