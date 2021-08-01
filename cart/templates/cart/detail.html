@@ -5,10 +5,53 @@
 {% endblock %}
 {% block content %}
     <h1 class="font-bold uppercase text-2xl mb-10 text-center">Ваша корзина</h1>
+
+    <div class="w-4/5 md:w-2/4 mx-auto px-4">
+        {% for item in cart %}
+            {% with product=item.product %}
+            <!-- Карточка товара -->
+			<div class='relative my-6 shadow-lg flex bg-white rounded border-t border-gray-50'>
+				<div class='flex-no-shrink p-4'>
+					<img alt='' class='w-14 block mx-auto' 
+                    src='
+                        {% if product.image %}
+                            {{ product.image.url }}
+                        {% else %}
+                            {% static "img/no_image.png" %}
+                        {% endif %}'
+                    >
+				</div>
+				<div class='flex-1 card-block relative'>
+                        <a class='-m-4 w-8 h-8 bg-white right-0 top-0 flex items-center justify-center text-center no-underline rounded-full text-black shadow hover:bg-red-400 hover:text-white absolute pin-t pin-r' 
+                        href="{% url "cart:cart_remove" product.id%}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </a>
+                    <div class="p-2">
+                            <h4 class='font-extralight text-xl md:text-2xl mt-2'>{{ product.name }}</h4>
+                    <!-- <p class='leading-normal'></p> -->
+                            <p class="text-lg text-gray-600 block p-2 font-normal text-right">
+                            <span class="text-black font-semibold">{{ item.quantity }} шт.</span> | {{ item.total_price }}₽</p>
+                        </div>
+                    </div>
+                </div>
+            {% endwith %}
+        {% endfor %}
+            <span class="w-full block text-right font-semibold">{{ cart.get_total_price }} руб.</span>
+    <div class="flex justify-between w-full pt-2">
+        <button class="btn">
+            <a href="{% url "shop:product_list" %}" class="button light">Продолжить покупки</a>
+        </button>
+        <button class="btn">
+            <a href="{% url "orders:order_create" %}" class="button">Оформить</a>
+        </button>
+    </div>
+		</div>
+{% comment %} 
     <div class="flex items-center justify-center">
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
-            {% for item in cart %}
-                {% with product=item.product %}
+
                 <!-- Карточка товара -->
                     <div class="relative bg-white py-0 px-6 rounded border w-64 my-4 mb-12 shadow-md">
                     <!-- Image  -->
@@ -51,51 +94,8 @@
                         {% endwith %}
             {% endfor %}
         </div>
-        </div>
+        </div> {% endcomment %}
 
-    {% comment %} <table class="w-full bg-white p-10 rounded-lg shadow" >
-        <tbody>
-        {% for item in cart %}
-            {% with product=item.product %}
-                <tr class="divide-y divide-gray-200 text-left">
-                    <td class="p-2">
-                        <a href="{{ product.get_absolute_url }}">
-                            <img class="mx-auto" style="width: 80px" src="
-                                {% if product.image %}
-                                    {{ product.image.url }}
-                                {% else %}
-                                    {% static "img/no_image.png" %}
-                                {% endif %}">
-                        </a>
-                    </td>
-                    <td class="pl-2">{{ product.name }}</td>
-                    <td class="p-2 text-center">{{ item.quantity }}</td>
-                    <td class="p-2 text-center">
-                    <a href="{% url "cart:cart_remove" product.id%}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-                    </a></td>
-                    <td class="num">{{ item.price }} руб.</td>
-                    <td class="p-2 text-center">{{ item.total_price }} руб.</td>
-                </tr>
-            {% endwith %}
-        {% endfor %}
-        <tr class="divide-y divide-gray-200 text-center">
-            <td class="py-8">Итого</td>
-            <td colspan="4"></td>
-            <td class="py-8">{{ cart.get_total_price }} руб.</td>
-        </tr>
-        </tbody>
-    </table> {% endcomment %}
-    <div class="flex justify-between w-full pt-2">
-        <button class="btn">
-            <a href="{% url "shop:product_list" %}" class="button light">Продолжить покупки</a>
-        </button>
-        <button class="btn">
-            <a href="{% url "orders:order_create" %}" class="button">Оформить</a>
-        </button>
-    </div>
-    </div>
+
 
 {% endblock %}
