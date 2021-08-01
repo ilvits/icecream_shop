@@ -11,7 +11,6 @@
 </head>
 <body class="font-sans font-extralight text-red-900 ">
 
-
     <div class="w-full h-10 md:h-14 text-gray-700 bg-white shadow-md fixed content-center top-0 z-50 backdrop-filter backdrop-blur-md bg-opacity-60">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-2 md:p-4 flex flex-row items-center justify-between">
@@ -46,6 +45,19 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
             </a>
+            {% if request.user.is_authenticated %}
+                <ul class="menu">
+                    <li {% if section=="dashboard" %}class="selected"{% endif %}>
+                    <a href="{% url " dashboard" %}">My dashboard</a>
+                    </li>
+                    <li {% if section=="images" %}class="selected"{% endif %}>
+                    <a href="#">Images</a>
+                    </li>
+                    <li {% if section=="people" %}class="selected"{% endif %}>
+                        <a href="#">People</a>
+                    </li>
+                </ul>
+            {% endif %}
         </div>
     </div>
     <div class="container mx-auto mt-14 md:mt-20 px-4">

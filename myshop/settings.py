@@ -13,6 +13,13 @@ ALLOWED_HOSTS = ['ilvits.com', '45.148.30.212', 'localhost']
 
 CART_SESSION_ID = 'cart'
 
+from django.urls import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,7 +36,6 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
-    'account',
 ]
 
 
