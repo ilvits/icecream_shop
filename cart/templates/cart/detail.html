@@ -6,11 +6,11 @@
 {% block content %}
     <h1 class="font-bold uppercase text-2xl mb-10 text-center">Ваша корзина</h1>
 
-    <div class="w-4/5 md:w-2/4 mx-auto px-4">
+    <div class="w-full md:w-2/4 mx-auto px-4">
         {% for item in cart %}
             {% with product=item.product %}
             <!-- Карточка товара -->
-			<div class='relative my-6 shadow-lg flex bg-white rounded border-t border-gray-50'>
+			<div class='relative my-6 shadow-lg flex bg-white rounded border-t border-gray-50 z-0'>
 				<div class='flex-no-shrink p-4'>
 					<img alt='' class='w-14 block mx-auto' 
                     src='
@@ -48,54 +48,4 @@
         </button>
     </div>
 		</div>
-{% comment %} 
-    <div class="flex items-center justify-center">
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
-
-                <!-- Карточка товара -->
-                    <div class="relative bg-white py-0 px-6 rounded border w-64 my-4 mb-12 shadow-md">
-                    <!-- Image  -->
-                        <div class="absolute rounded-full py-0 px-0 shadow-md left-4 -top-6">
-                            <img class="mx-auto w-16" src="
-                                    {% if product.image %}
-                                        {{ product.image.url }}
-                                    {% else %}
-                                        {% static "img/no_image.png" %}
-                                    {% endif %}">
-                        </div>
-                        <!-- Название -->
-                        <div class="mt-12">
-                            <p class="text-xl font-semibold my-2">{{ product.name }}</p>
-                            <div class="flex space-x-2 text-gray-400 text-sm my-3">
-                                <!-- svg  -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                <p>Цена: {{ item.price }} ₽</p>  
-                            </div>
-                            <div class="border-t-2"></div>
-
-                            <div class="flex justify-between">
-                                <div class="my-2">
-                                    <p class="font-semibold text-base mb-2">Количество</p>
-                                    <div class="flex space-x-2">
-                                        <p>{{ item.quantity }} шт.</p>
-                                    </div>
-                                </div>
-                                <div class="my-2">
-                                    <p class="font-semibold text-base mb-2">Сумма</p>
-                                    <div class="text-base text-gray-400 font-semibold">
-                                        <p>{{ item.total_price }} ₽</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        {% endwith %}
-            {% endfor %}
-        </div>
-        </div> {% endcomment %}
-
-
-
 {% endblock %}
