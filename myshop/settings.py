@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ilvits.com', '45.148.30.212', 'localhost']
+ALLOWED_HOSTS = ['ilvits.com', 'www.ilvits.com', '45.148.30.212', 'localhost']
 
 CART_SESSION_ID = 'cart'
 
@@ -32,12 +32,16 @@ INSTALLED_APPS = [
     # Other Django apps
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
+    'django_registration',
     # My apps
     'shop',
     'cart',
     'orders',
+    'accounts',
 ]
 
+ACCOUNT_ACTIVATION_DAYS = 2
+REGISTRATION_SALT = 'dewfmrtkgcnsemwru340'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'localhost'
