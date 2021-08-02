@@ -7,6 +7,7 @@
 {% block content %}
     {% if user.is_authenticated %}
         <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+        <a href="{% url auth_logout %}">выйти</a>.
     {% else %}
         <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
             <form action="." method="post" class="px-8 pt-6 pb-8 mb-4 rounded">
@@ -26,6 +27,14 @@
                         {% endfor %}
                     </div>
                 {% endfor %}
+                <script type="text/javascript">
+                    document.getElementById('id_username').focus()
+                </script>
+                <br/><br/>
+                <ul>
+                    <li><a href="{% url auth_password_reset %}">Забыли пароль?</a></li>
+                    <li><a href="{% url registration_register %}">Регистрация</a></li>
+                </ul>
                 <button class="block w-full bg-yellow-700 text-white font-bold p-4 rounded-lg">
                     Зарегистрироваться
                 </button>
