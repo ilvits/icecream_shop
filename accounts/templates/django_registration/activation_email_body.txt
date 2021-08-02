@@ -1,1 +1,11 @@
-Само письмо....
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+         <title>Account activation</title>
+</head>
+<body>
+<h1>Hello {{ username }}</h1>
+ <p>Click the link on the right to complete the activation, <a href="https://ilvits.com/user/activate/?token={{ token }}">Activate</a></p>
+</body>
+</html>
