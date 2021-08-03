@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
-    'accounts',
 ]
 
 ACCOUNT_ACTIVATION_DAYS = 2
