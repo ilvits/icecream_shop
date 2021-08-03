@@ -9,6 +9,7 @@ from shop import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage),
+    path('accounts/', include('accounts.urls')),
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
     path('shop/', include(('shop.urls', 'shop'), namespace='shop')),
