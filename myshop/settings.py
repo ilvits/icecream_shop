@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     # Other Django apps
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
-    'django_registration',
     # My apps
     'shop',
     'cart',
