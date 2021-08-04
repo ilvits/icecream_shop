@@ -2,4 +2,5 @@ from .cart import Cart
 
 
 def cart(request):
-    return {'cart': Cart(request)}
+    user = request.user
+    return {'cart': Cart(request), 'user': user}

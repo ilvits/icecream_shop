@@ -32,9 +32,9 @@ export_to_csv.short_description = 'Export to CSV'
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'email',
+    list_display = ['id', 'owner', 'first_name', 'last_name', 'email',
                     'paid', 'created', 'updated']
-    list_filter = ['paid', 'created', 'updated']
+    list_filter = ['owner', 'paid', 'created', 'updated']
     inlines = [OrderItemInline]
     actions = [export_to_csv]
 

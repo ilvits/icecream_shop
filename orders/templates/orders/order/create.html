@@ -34,6 +34,7 @@
             {% endfor %}
         </div>
     {% endfor %}
+        <input type="hidden" name="owner" value="{{ user.id }}">
         <button class="block w-full bg-yellow-700 text-white font-bold p-4 rounded-lg">
             Сделать заказ
         </button>

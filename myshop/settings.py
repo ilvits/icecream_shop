@@ -13,7 +13,7 @@ ALLOWED_HOSTS = ['ilvits.com', 'www.ilvits.com', '45.148.30.212', 'localhost', '
 
 CART_SESSION_ID = 'cart'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'profile'
 LOGOUT_REDIRECT_URL = 'login'
 
 # Application definition

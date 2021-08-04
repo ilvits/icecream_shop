@@ -36,7 +36,20 @@
         </div>
         <div class="flex px-8 w-full">
             <div class="text-center">
-                <span class="text-3xl p-8">Привет, {{ user.username }}</span>
+                {% if order_list %}
+                    <ul>
+
+                        {% for order in order_list %}
+                            <li>
+                                <a href="{{ order.get_absolute_url }}">{{ order.name }}</a> ({{order.name}})
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                {% else %}
+                    <p>There are no orders in the library.</p>
+                {% endif %}
+            {{ user.username }}
             </div>
         </div>
     </div>
