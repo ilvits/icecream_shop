@@ -1,3 +1,4 @@
+
 {% extends "shop/base.html" %}
 
 {% block content %}
@@ -9,7 +10,7 @@
             </div>
             <ul class="flex flex-col py-4">
                 <li>
-                    <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <a href="{% url 'profile' %}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-shopping-bag"></i></span>
                         <span class="text-sm font-medium">Заказы</span>
                     </a>
@@ -35,23 +36,72 @@
             </ul>
         </div>
         <div class="flex px-8 w-full">
-            <div class="text-center">
-                {% if order_list %}
-                    <ul>
-
-                        {% for order in order_list %}
-                            <li>
-                                <a href="{{ order.get_absolute_url }}">{{ order.name }}</a> ({{order.name}})
-                            </li>
-                        {% endfor %}
-
-                    </ul>
-                {% else %}
-                    <p>There are no orders in the library.</p>
-                {% endif %}
-            {{ user.username }}
-            </div>
+            <h1>Order {{ order.id }}</h1>
+    <ul class="object-tools">
+        <li>
+            <a href="#" onclick="window.print();">Print order</a>
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <th>Created</th>
+            <td>{{ order.created }}</td>
+        </tr>
+        <tr>
+            <th>Customer</th>
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ order.address }}, {{ order.postal_code }} {{ order.city }}</td>
+        </tr>
+        <tr>
+            <th>Total amount</th>
+            <td>${{ order.get_total_cost }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
+        </tr>
+    </table>
+    <div class="module">
+        <div class="tabular inline-related last-related">
+            <table>
+                <h2>Items bought</h2>
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in order.items.all %}
+                    <tr class="row{% cycle "1" "2" %}">
+                        <td>{{ item.product.name }}</td>
+                        <td class="num">${{ item.price }}</td>
+                        <td class="num">{{ item.quantity }}</td>
+                        <td class="num">${{ item.get_cost }}</td>
+                    </tr>
+                {% endfor %}
+                <tr class="total">
+                    <td colspan="3">Total</td>
+                    <td class="num">${{ order.get_total_cost }}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+
+
+        </div>
+    </div>
+
+    
 
 {% endblock %}
