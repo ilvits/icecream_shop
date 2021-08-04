@@ -3,51 +3,47 @@
 
 {% block content %}
 
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-                please login with an account that has access.</p>
-        {% else %}
-            <p>Please login to see this page.</p>
-        {% endif %}
-
-    {% else %}
     {% if user.is_authenticated %}
-        You are logged in
-        <a href="{% url 'logout' %}">Logout</a>
+        <div class="text-center my-16 mx-16">Вы уже вошли<br>
+        <a class="text-gray-500 hover:text-black font-bold " href="{% url 'logout' %}">Выйти</a>
+        </div>
     {% else %}
-        <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
-            <form method="post" action="{% url 'login' %}">
+        <div class="w-16 my-8 -mt-8 mx-auto">
+            <img class="w-16 h-16" src="/media/logo.svg">
+        </div>
+        <div class="bg-white rounded-lg shadow-lg border-t border-gray-50 md:max-w-sm mx-auto">
+
+            <div class="border-b py-8 font-bold text-black text-center text-xl tracking-widest uppercase">
+                С возвращением!
+            </div>
+            <form class="bg-gray-50 px-10 py-10" method="post" action="{% url 'login' %}">
 
                 {% csrf_token %}
-                <div class="mb-5">
-                            <label for="{{ field.id_for_label }}" class="block mb-2 font-bold text-gray-600">
-                            {{ form.username.label_tag }}
-                            </label>
-
-                            {%  render_field form.username|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" placeholder=field.label %}
+                <div class="mb-3">
+                    {%  render_field form.username|add_class:"border border-gray-200 p-3 w-full rounded mb-" placeholder='Имя пользователя' %}
                 </div>
-                    <div class="mb-5">
-                            <label for="{{ field.id_for_label }}" class="block mb-2 font-bold text-gray-600">
-                                {{ form.password.label_tag }}
-                            </label>
-
-                            {%  render_field form.password|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" placeholder=field.label %}
+                <div class="mb-6">
+                    {%  render_field form.password|add_class:"border border-gray-200 p-3 w-full rounded mb-" placeholder='**************' %}
+                </div>
+                {% if form.errors %}
+                    <div class="text-sm text-red-400 text-center mb-6">
+                    <p>Имя пользователя или пароль неверны. Попробуйте еще раз.</p>
                     </div>
-                <input class="block w-32 bg-white text-gray-800 font-bold p-4 rounded-lg mb-5 shadow-md" type="submit" value="login">
+                {% endif %}
+                <div class="flex">
+                    <button type="submit" class="bg-white border-t border-gray-100 hover:bg-gray-100 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded-lg ">
+                        Войти
+                    </button>
+                </div>
                 <input type="hidden" name="next" value="{{ next }}">
             </form>
-
-            {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+            <div class="border-t px-6 py-4">
+                <div class="flex justify-between">
+                    <a href="{% url 'signup' %}" class="font-bold text-gray-700 hover:text-black no-underline">Нет аккаунта?</a>
+                    <a href="{% url 'password_reset' %}" class="text-gray-700 hover:text-black no-underline">Забыли пароль?</a>
+                </div>
+            </div>
         </div>
 
-
     {% endif %}
-    {% endif %}
-
 {% endblock %}

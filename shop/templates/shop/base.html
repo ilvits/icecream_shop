@@ -9,8 +9,8 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 </head>
-<body class="font-sans font-extralight text-red-900 ">
-
+<body class="font-sans font-extralight text-gray-700 ">
+{% if user.is_authenticated %}
     <div class="w-full h-10 md:h-14 text-gray-700 bg-white shadow-md fixed content-center top-0 z-50 backdrop-filter backdrop-blur-md bg-opacity-60">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-2 md:p-4 flex flex-row items-center justify-between">
@@ -31,48 +31,53 @@
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-red-50 focus:bg-yellow-100 focus:outline-none focus:shadow-outline"
                    href="#">Контакты</a>
                 {%  if user.is_authenticated %}
-                <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md" href="{% url 'logout' %}">
-                    <svg w-6 h-6 xmlns="http://www.w3.org/2000/svg" class="flex h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                </a>
+
+                    <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md" href="{% url 'profile' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+
                 {% else %}
-                <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md" href="{% url 'login' %}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="flex h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                    </svg>
-                </a>
+
+                    <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md" href="{% url 'login' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                        </svg>
+                    </a>
+
                 {% endif %}
             </nav>
-            <div class="hidden md:inline-flex pl-4 text-sm md:mt-0 md:ml-4 z-40"
+            <div class="hidden md:inline-flex pl-4 text-xs text-gray-400 md:mt-0 md:ml-4 z-40 pt-2"
                href="{% url 'cart:cart_detail' %}">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
                         {{ total_items }} шт.
-                        <span class="font-light z-40">({{ cart.get_total_price }}₽)</span>
+                        <span class="font-normal z-40">({{ cart.get_total_price }}₽)</span>
                     {% endif %}
                 {% endwith %}
             </div>
-            <a class="hidden md:inline-flex pl-1 pb-1" href="{% url 'cart:cart_detail' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            <a class="hidden md:inline-flex pl-1" href="{% url 'cart:cart_detail' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
             </a>
             {% if user.is_authenticated %}
-            <a class="hidden md:inline-flex pl-1 pb-1 pl-4" href="{% url 'logout' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            <a class="hidden md:inline-flex pl-1 pb-0 pl-4" href="{% url 'profile' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </a>
             {% else %}
-            <a class="hidden md:inline-flex pl-1 pb-1 pl-4" href="{% url 'login' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            <a class="hidden md:inline-flex pl-1 pb-0 pl-4" href="{% url 'login' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                 </svg>
             </a>
             {% endif %}
         </div>
     </div>
+{% endif %}
     <div class="container mx-auto mt-14 md:mt-20 px-4">
         {% block content %}
         {% endblock %}
