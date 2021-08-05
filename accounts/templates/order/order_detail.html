@@ -39,27 +39,23 @@
             <h1 class="text-2xl font-normal">Заказ номер {{ order.id }}</h1>
     <table class="block my-8">
         <tr>
-            <th>Создан</th>
+            <th class="px-4">Создан</th>
             <td>{{ order.created }}</td>
         </tr>
         <tr>
-            <th>Заказчик</th>
-            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <th class="px-4">Заказчик</th>
+            <td>{{ order.owner.first_name }} {{ order.owner.last_name }}</td>
         </tr>
         <tr>
-            <th>E-mail</th>
-            <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
+            <th class="px-4">E-mail</th>
+            <td><a href="mailto:{{ order.owner.email }}">{{ order.owner.email }}</a></td>
         </tr>
         <tr>
-            <th>Адрес</th>
-            <td>{{ order.address }}, {{ order.postal_code }} {{ order.city }}</td>
-        </tr>
-        <tr>
-            <th>Общая сумма</th>
+            <th class="px-4">Cумма</th>
             <td>{{ order.get_total_cost }}</td>
         </tr>
         <tr>
-            <th>Статус</th>
+            <th class="px-4">Статус</th>
             <td>{% if order.paid %}Оплачен{% else %}Ожидает оплаты{% endif %}</td>
         </tr>
     </table>
@@ -68,8 +64,8 @@
             <table class="block my-4">
                 <h2 class="text-2xl font-normal">Состав заказа</h2>
                 <thead>
-                <tr class="px-4">
-                    <th class="px-4">Наклейки</th>
+                <tr class="px-4 border-b">
+                    <th class="px-4 text-left">Наклейки</th>
                     <th class="px-4">Цена</th>
                     <th class="px-4">Количество</th>
                     <th class="px-4">Сумма</th>
@@ -85,8 +81,10 @@
                     </tr>
                 {% endfor %}
                 <tr class="total">
-                    <td class="py-4">Итого:</td>
-                    <td class="px-4">{{ order.get_total_cost }}₽</td>
+                    <td class="py-4 text-xl">Итого:</td>
+                    <td class="py-4 text-xl"></td>
+                    <td class="py-4 text-xl"></td>
+                    <td class="px-4 text-xl font-normal">{{ order.get_total_cost }}₽</td>
                 </tr>
                 </tbody>
             </table>
