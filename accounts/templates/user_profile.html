@@ -1,10 +1,11 @@
 {% extends "shop/base.html" %}
+{% load static %}
 
 {% block content %}
 
-    <div class="min-h-screen flex flex-row -mt-4">
+    <div class="min-h-screen flex flex-row">
         <div class="flex flex-col w-56 bg-white overflow-hidden border-r">
-            <div class="flex items-center justify-center h-20 border-b">
+            <div class="flex items-left h-20">
                 <img class="w-16 h-16" src="/media/logo.svg">
             </div>
             <ul class="flex flex-col py-4">
@@ -35,16 +36,33 @@
             </ul>
         </div>
         <div class="flex px-8 w-full">
-            <div class="text-center">
-                <span class="text-3xl p-8">Привет, {{ user.first_name }}</span>
-            <div class="block">
-                {% for order in orders %}
-                
-                <span class="text-red">
-                    <a class="px-4" href="{{ order.get_absolute_url }}"> Заказ №: {{ order.id }}</span></a> 
-                    <span class="font-normal">({{ order.get_total_cost }}₽)</span><br>
-
-                {% endfor %}
+            <div class="">
+                <span class="text-3xl mt-8">Привет, {{ user.first_name }}</span>
+                <div class="flex-wrap">
+                    {% for order in orders %}
+                    <a href="{{ order.get_absolute_url }}">
+                        <div class="m-8 shadow p-4 w-full md:w-3/4 hover:bg-gray-50 transition">
+                            <div class="flex w-full justify-left">
+                                <span class="px-2">Заказ №: {{ order.id }}</span>
+                                <span class="font-normal">{{ order.get_total_cost }}₽</span>
+                            </div>
+                            <div class="flex flex-wrap py-2">
+                            {% for item in order.get_order_items %}
+                            <div class='p-1'>
+                                <img alt='{{ item.product.name }}' class='w-14' 
+                                src='
+                                    {% if item.product.image %}
+                                        {{ item.product.image.url }}
+                                    {% else %}
+                                        {% static "img/no_image.png" %}
+                                    {% endif %}
+                                    '>
+                            </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -19,6 +19,7 @@ class SignUpView(generic.CreateView):
 
 
 def user_profile(request):
+    user = None
     user = request.user
     if user.is_superuser:
         orders = Order.objects.all()

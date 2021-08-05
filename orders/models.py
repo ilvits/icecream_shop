@@ -27,6 +27,10 @@ class Order(models.Model):
     def get_absolute_url(self):
         return reverse('accounts:order_detail',
                         args=[self.id])
+    
+    def get_order_items(self):
+        order_items = self.items.all()
+        return order_items
 
 
 class OrderItem(models.Model):
