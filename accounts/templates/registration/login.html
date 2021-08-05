@@ -16,7 +16,7 @@
             <div class="border-b py-8 font-bold text-black text-center text-xl tracking-widest uppercase">
                 С возвращением!
             </div>
-            <form class="bg-gray-50 px-10 py-10" method="post" action="{% url 'login' %}">
+            <form class="bg-gray-50 px-10 py-10" method="post" action="{% url 'accounts:login' %}">
 
                 {% csrf_token %}
                 <div class="mb-3">
@@ -39,8 +39,8 @@
             </form>
             <div class="border-t px-6 py-4">
                 <div class="flex justify-between">
-                    <a href="{% url 'signup' %}" class="font-bold text-gray-700 hover:text-black no-underline">Нет аккаунта?</a>
-                    <a href="{% url 'password_reset' %}" class="text-gray-700 hover:text-black no-underline">Забыли пароль?</a>
+                    <a href="{% url 'accounts:signup' %}" class="font-bold text-gray-700 hover:text-black no-underline">Нет аккаунта?</a>
+                    <a href="{% url 'accounts:password_reset' %}" class="text-gray-700 hover:text-black no-underline">Забыли пароль?</a>
                 </div>
             </div>
         </div>
