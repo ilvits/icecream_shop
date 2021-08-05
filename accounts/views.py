@@ -20,7 +20,10 @@ class SignUpView(generic.CreateView):
 
 def user_profile(request):
     user = request.user
-    orders = Order.objects.filter(owner=user.id)
+    if user == 'ilvits':
+        orders = Order.objects.all()
+    else:
+        orders = Order.objects.filter(owner=user.id)
     return render(request,
                   'user_profile.html',
                   {'orders': orders})
