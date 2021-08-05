@@ -19,12 +19,21 @@ class SignUpView(generic.CreateView):
     template_name = 'registration/signup.html'
 
 
-class UserProfile(generic.ListView):
+def user_profile(request):
+    user = request.user
+    orders = Order.objects.filter(owner=user.id)
+    return render(request,
+                  'user_profile.html',
+                  {'orders': orders})
 
-    model = Order
-    context_object_name = 'order_list'   # ваше собственное имя переменной контекста в шаблоне
-    queryset = Order.objects.all() # Получение объектов
-    template_name = 'profile.html'  # Определение имени вашего шаблона и его расположения
+
+
+# class UserProfile(generic.ListView):
+
+#     model = Order
+#     context_object_name = 'order_list'   # ваше собственное имя переменной контекста в шаблоне
+#     queryset = Order.objects.all() # Получение объектов
+#     template_name = 'profile.html'  # Определение имени вашего шаблона и его расположения
 
     # def get(self, request):
     #     if request.user.is_authenticated():
