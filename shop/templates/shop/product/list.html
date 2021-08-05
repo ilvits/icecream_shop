@@ -32,14 +32,14 @@
     <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6">
         {% for product in products %}
             <div class="md:w-44 lg:w-44 rounded bg-white p-2 m-4 border border-gray-50" style="box-shadow: 4px 4px 20px rgba(0, 0, 0, .05);">
-                <div class="card-image h-full w-32 md:w-full md:h-40">
+                <div class="flex justify-center h-full w-32 md:w-full md:h-40">
                     <a href="{{ product.get_absolute_url }}">
                         <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44" loading="lazy" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                     </a>
                 </div>
 
                 <form class="mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
-                    <div class="flex justify-center rounded-full px-2 mx-4 shadow border border-gray-50 items-center align-items-center">
+                    <div class="flex justify-center rounded-full px-2 md:mx-4 shadow border border-gray-50 items-center align-items-center">
                         <button class="flex" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
