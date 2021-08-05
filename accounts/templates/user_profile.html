@@ -41,7 +41,8 @@
                 {% for order in orders %}
                 
                 <span class="text-red">
-                    <a href="{{ order.get_absolute_url }}"> Заказ номер: {{ order.id }}</span></a> ({{ order.first_name }})<br>
+                    <a class="px-4" href="{{ order.get_absolute_url }}"> Заказ №: {{ order.id }}</span></a> 
+                    <span class="font-normal">({{ order.get_total_cost }}₽)</span><br>
 
                 {% endfor %}
                 </div>
