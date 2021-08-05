@@ -73,7 +73,7 @@
                 </thead>
                 <tbody class="px-4">
                 {% for item in order.items.all %}
-                    <tr class="row{% cycle "1" "2" %}">
+                    <tr class="row{% cycle "1" "2" %} border-b">
                         <td class="px-4">{{ item.product.name }}</td>
                         <td class="px-4">{{ item.price }}₽</td>
                         <td class="px-4">{{ item.quantity }} шт.</td>
