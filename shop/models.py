@@ -5,6 +5,7 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
+    icon = models.ImageField(upload_to='images/', blank=True)
 
     class Meta:
         ordering = ('name',)
@@ -20,7 +21,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category    = models.ForeignKey(Category, related_name = 'products', on_delete=models.CASCADE)
+    category    = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name        = models.CharField(max_length=255)
     slug        = models.CharField(max_length=255)
     description = models.TextField(blank = True)
@@ -43,4 +44,4 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_detail',
-                        args=[self.id, self.slug])
+                       args=[self.id, self.slug])
