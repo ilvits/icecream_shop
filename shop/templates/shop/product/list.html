@@ -38,7 +38,7 @@
                     </a>
                 </div>
 
-                <form class="mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
+                <form class="flex-col mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
                     <div class="flex justify-center rounded-full md:mx-4 shadow border border-gray-50 items-center align-items-center">
                         <button class="flex" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,7 +54,7 @@
                     </div>
                             {{ cart_product_form }}
                             {% csrf_token %}
-                            <button class="flex p-1 my-2 mx-auto w-full shadow rounded font-normal justify-center align-items-center" type="submit">Добавить</button>
+                            <button class="flex p-1 my-2 mx-auto w-32 shadow rounded font-normal justify-center align-items-center" type="submit">Добавить</button>
                 </form>
             </div>
         {% endfor %}
