@@ -44,12 +44,12 @@
             </ul>
         </div>
         <div class="flex px-8 w-full">
-            <div class="mt-2">
+            <div class="flex-wrap w-full mt-2 justify-center">
                 <span class="text-3xl">Привет, {{ user.first_name }}</span>
-                <div class="flex-wrap">
+                <div class="">
                     {% for order in orders %}
                         <a href="{{ order.get_absolute_url }}">
-                            <div class="mb-8 mt-4 md:m-8 hover:shadow-md rounded border w-full md:w-3/4 transition">
+                            <div class="mb-8 mt-4 hover:shadow-2xl transform hover:scale-105 rounded border w-full max-w-md transition">
                                 <div class="flex py-1 md:py-2 w-full bg-gray-100">
                                     <div class="flex-none px-2 font-medium">Заказ №: {{ order.id }}</div>
                                     <div class="flex flex-grow"></div>
