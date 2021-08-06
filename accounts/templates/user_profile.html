@@ -73,7 +73,7 @@
                                 {% if user.is_superuser %}
                                     <div class="flex-grow text-center">{{ order.owner }}</div>
                                 {% endif %}
-                                <div class="flex border-t md:p-2">
+                                <div class="flex border-t px-2 py-1">
                                     <div class="flex-none">{{ order.created|date:'d.m.Y' }}</div>
                                     <div class="flex-grow"></div>
                                     <div class="flex font-normal align-items-center">
