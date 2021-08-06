@@ -1,100 +1,64 @@
-
-{% extends "shop/base.html" %}
+{% extends "profile_base.html" %}
+{% load static %}
 
 {% block content %}
-
-    <div class="min-h-screen flex flex-row -mt-4">
-        <div class="flex flex-col w-56 bg-white overflow-hidden border-r">
-            <div class="flex items-center justify-center h-20 border-b">
-                <img class="w-16 h-16" src="/media/logo.svg">
-            </div>
-            <ul class="flex flex-col py-4">
-                <li>
-                    <a href="{% url 'accounts:user_profile' %}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-shopping-bag"></i></span>
-                        <span class="text-sm font-medium">Заказы</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-chat"></i></span>
-                        <span class="text-sm font-medium">Чат</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-user"></i></span>
-                        <span class="text-sm font-medium">Профиль</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'accounts:logout' %}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-log-out"></i></span>
-                        <span class="text-sm font-medium">Выйти</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="block  px-8 w-full">
+    <div class="min-h-screen flex flex-row">
+        {{ block.super }}
+        <div class="block px-8 w-full">
             <h1 class="text-2xl font-normal">Заказ номер {{ order.id }}</h1>
-    <table class="block my-8">
-        <tr>
-            <th class="px-4">Создан</th>
-            <td>{{ order.created }}</td>
-        </tr>
-        <tr>
-            <th class="px-4">Заказчик</th>
-            <td>{{ order.owner.first_name }} {{ order.owner.last_name }}</td>
-        </tr>
-        <tr>
-            <th class="px-4">E-mail</th>
-            <td><a href="mailto:{{ order.owner.email }}">{{ order.owner.email }}</a></td>
-        </tr>
-        <tr>
-            <th class="px-4">Cумма</th>
-            <td>{{ order.get_total_cost }}</td>
-        </tr>
-        <tr>
-            <th class="px-4">Статус</th>
-            <td>{% if order.paid %}Оплачен{% else %}Ожидает оплаты{% endif %}</td>
-        </tr>
-    </table>
-    <div >
-        <div class="">
-            <table class="block my-4">
-                <h2 class="text-2xl font-normal">Состав заказа</h2>
-                <thead>
-                <tr class="px-4 border-b">
-                    <th class="px-4 text-left">Наклейки</th>
-                    <th class="px-4">Цена</th>
-                    <th class="px-4">Количество</th>
-                    <th class="px-4">Сумма</th>
+            <table class="block my-8">
+                <tr>
+                    <th class="px-4">Создан</th>
+                    <td>{{ order.created }}</td>
                 </tr>
-                </thead>
-                <tbody class="px-4">
-                {% for item in order.items.all %}
-                    <tr class="row{% cycle "1" "2" %} border-b">
-                        <td class="px-4">{{ item.product.name }}</td>
-                        <td class="px-4">{{ item.price }}₽</td>
-                        <td class="px-4">{{ item.quantity }} шт.</td>
-                        <td class="px-4">{{ item.get_cost }}₽</td>
-                    </tr>
-                {% endfor %}
-                <tr class="total">
-                    <td class="py-4 text-xl">Итого:</td>
-                    <td class="py-4 text-xl"></td>
-                    <td class="py-4 text-xl"></td>
-                    <td class="px-4 text-xl font-normal">{{ order.get_total_cost }}₽</td>
+                <tr>
+                    <th class="px-4">Заказчик</th>
+                    <td>{{ order.owner.first_name }} {{ order.owner.last_name }}</td>
                 </tr>
-                </tbody>
+                <tr>
+                    <th class="px-4">E-mail</th>
+                    <td><a href="mailto:{{ order.owner.email }}">{{ order.owner.email }}</a></td>
+                </tr>
+                <tr>
+                    <th class="px-4">Cумма</th>
+                    <td>{{ order.get_total_cost }}</td>
+                </tr>
+                <tr>
+                    <th class="px-4">Статус</th>
+                    <td>{% if order.paid %}Оплачен{% else %}Ожидает оплаты{% endif %}</td>
+                </tr>
             </table>
+            <div>
+                <div class="">
+                    <table class="block my-4">
+                        <h2 class="text-2xl font-normal">Состав заказа</h2>
+                        <thead>
+                        <tr class="px-4 border-b">
+                            <th class="px-4 text-left">Наклейки</th>
+                            <th class="px-4">Цена</th>
+                            <th class="px-4">Количество</th>
+                            <th class="px-4">Сумма</th>
+                        </tr>
+                        </thead>
+                        <tbody class="px-4">
+                        {% for item in order.items.all %}
+                            <tr class="row{% cycle "1" "2" %} border-b">
+                                <td class="px-4">{{ item.product.name }}</td>
+                                <td class="px-4">{{ item.price }}₽</td>
+                                <td class="px-4">{{ item.quantity }} шт.</td>
+                                <td class="px-4">{{ item.get_cost }}₽</td>
+                            </tr>
+                        {% endfor %}
+                        <tr class="total">
+                            <td class="py-4 text-xl">Итого:</td>
+                            <td class="py-4 text-xl"></td>
+                            <td class="py-4 text-xl"></td>
+                            <td class="px-4 text-xl font-normal">{{ order.get_total_cost }}₽</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-
-        </div>
-    </div>
-
-    
-
 {% endblock %}

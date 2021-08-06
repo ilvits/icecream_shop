@@ -1,112 +1,72 @@
-{% extends "shop/base.html" %}
+{% extends "profile_base.html" %}
 {% load static %}
 
 {% block content %}
-
     <div class="min-h-screen flex flex-row">
-        <div class="flex flex-col w-16 md:w-56 bg-white border-r border-gray-50">
-            <div class="flex items-center mt-3 pl-1 justify-center">
-                <img class="w-8 md:w-16" src="/media/logo.svg">
-            </div>
-            <ul class="flex flex-col py-4">
-                <li>
-                    <a href="{% url 'accounts:user_profile' %}"
-                       class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center pl-2 h-12 w-12 text-lg text-gray-400"><i
-                                class="bx bx-shopping-bag"></i></span>
-                        <span class="hidden md:inline-flex text-sm font-medium">Заказы</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                       class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center pl-2 h-12 w-12 text-lg text-gray-400"><i
-                                class="bx bx-chat"></i></span>
-                        <span class="hidden md:inline-flex text-sm font-medium">Чат</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                       class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center pl-2 h-12 w-12 text-lg text-gray-400"><i
-                                class="bx bx-user"></i></span>
-                        <span class="hidden md:inline-flex text-sm font-medium">Профиль</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'accounts:logout' %}"
-                       class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                        <span class="inline-flex items-center justify-center pl-2 h-12 w-12 text-lg text-gray-400"><i
-                                class="bx bx-log-out"></i></span>
-                        <span class="hidden md:inline-flex text-sm font-medium">Выйти</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="flex px-8 w-full">
-            <div class="flex-wrap w-full mt-2 justify-center">
-                <span class="text-3xl">Привет, {{ user.first_name }}</span>
-                <div class="">
-                    {% for order in orders %}
-                        <a href="{{ order.get_absolute_url }}">
-                            <div class="mb-8 mt-4 hover:shadow-2xl transform hover:scale-105 rounded border w-full max-w-md transition">
-                                <div class="flex py-1 md:py-2 w-full bg-gray-100">
-                                    <div class="flex-none px-2 font-medium">Заказ №: {{ order.id }}</div>
-                                    <div class="flex flex-grow"></div>
-                                    <div class="flex-none px-2 font-normal">{{ order.get_total_cost }}₽</div>
-                                </div>
-                                <div class="w-full flex flex-wrap justify-left">
-                                    {% for item in order.get_order_items %}
-                                        <div class='p-2'>
-                                            <img class='w-14'
-                                                 src='
+    {{ block.super }}
+    <div class="flex px-8 w-full">
+        <div class="flex-wrap w-full mt-2 justify-center">
+            <span class="text-3xl">Привет, {{ user.first_name }}</span>
+            <div class="">
+                {% for order in orders %}
+                    <a href="{{ order.get_absolute_url }}">
+                        <div class="mb-8 mt-4 hover:shadow-2xl transform hover:scale-105 rounded border w-full max-w-md transition">
+                            <div class="flex py-1 md:py-2 w-full bg-gray-100">
+                                <div class="flex-none px-2 font-medium">Заказ №: {{ order.id }}</div>
+                                <div class="flex flex-grow"></div>
+                                <div class="flex-none px-2 font-normal">{{ order.get_total_cost }}₽</div>
+                            </div>
+                            <div class="w-full flex flex-wrap justify-left">
+                                {% for item in order.get_order_items %}
+                                    <div class='p-2'>
+                                        <img class='w-14'
+                                             src='
                                             {% if item.product.image %}
                                                 {{ item.product.image.url }}
                                             {% else %}
                                                 {% static "img/no_image.png" %}
                                             {% endif %}
                                             '>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-
-                                {% if user.is_superuser %}
-                                    <div class="flex-grow text-center">{{ order.owner }}</div>
-                                {% endif %}
-                                <div class="flex border-t px-2 py-1">
-                                    <div class="flex-none">{{ order.created|date:'d.m.Y' }}</div>
-                                    <div class="flex-grow"></div>
-                                    <div class="flex font-normal align-items-center">
-                                        <div class="flex pr-1">
-                                            Оплата:
-                                        </div>
-                                        {% if order.paid == True %}
-                                            <div class="flex text-green-600 h-4 w-4 pt-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                </svg>
-                                            </div>
-                                        {% else %}
-                                            <div class="flex text-red-700 h-4 w-4 pt-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                </svg>
-                                            </div>
-                                        {% endif %}
                                     </div>
+                                {% endfor %}
+                            </div>
+
+                            {% if user.is_superuser %}
+                                <div class="flex-grow text-center">{{ order.owner }}</div>
+                            {% endif %}
+                            <div class="flex border-t px-2 py-1">
+                                <div class="flex-none">{{ order.created|date:'d.m.Y' }}</div>
+                                <div class="flex-grow"></div>
+                                <div class="flex font-normal align-items-center">
+                                    <div class="flex pr-1">
+                                        Оплата:
+                                    </div>
+                                    {% if order.paid == True %}
+                                        <div class="flex text-green-600 h-4 w-4 pt-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      stroke-width="2"
+                                                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                        </div>
+                                    {% else %}
+                                        <div class="flex text-red-700 h-4 w-4 pt-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      stroke-width="2"
+                                                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
-                        </a>
-                    {% endfor %}
-                </div>
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>
-
+    </div>
 {% endblock %}
