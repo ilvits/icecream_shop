@@ -14,7 +14,7 @@
             {% endif %}
         {% endwith %}
     </div>
-<div class="">
+<div class="mt-3">
     <div class="" id="categories">
         <h2 class="text-3xl text-center mb-4">{% if category %}{{ category.name }}{% else %}Все наклейки{% endif %}</h2>
         <ul class="flex justify-center">
@@ -22,14 +22,14 @@
                 <a
                         class="text-lg"
                         {% if not category %} class="text-red-400 bg-yellow-50"{% endif %} href="{% url "shop:product_list" %}">
-                    <img class="w-10" src="/media/all_cat.png">
+                    <img class="w-8 md:w-10" src="/media/all_cat.png">
                 </a>
             </li>
             {% for c in categories %}
                 <li class="mx-4">
                     <a {% if category.slug == c.slug %}class="text-red-400"{% endif %} href="{{ c.get_absolute_url }}">
                         {% if c.icon %}
-                        <img class="w-10" src="{{ c.icon.url }}">
+                        <img class="w-8 md:w-10" src="{{ c.icon.url }}">
                         {% else %}
                         {{ c.name }}
                         {% endif %}
