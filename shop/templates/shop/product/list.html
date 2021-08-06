@@ -9,66 +9,81 @@
             {% if cart|length > 0 %}
                 <a href="{% url "cart:cart_detail" %}"
                    class="z-50 fixed bottom-6 right-6 rounded-full px-6 py-1 bg-red-400 border text-lg md:text-sm text-white font-light">
-                        {{ cart.get_total_price }} ₽
+                    {{ cart.get_total_price }} ₽
                 </a>
             {% endif %}
         {% endwith %}
     </div>
-<div class="mt-3">
-    <div class="" id="categories">
-        <h2 class="text-3xl text-center mb-4">{% if category %}{{ category.name }}{% else %}Все наклейки{% endif %}</h2>
-        <ul class="flex justify-center">
-            <li class="mx-6">
-                <a
-                        class="text-lg"
-                        {% if not category %} class="text-red-400 bg-yellow-50"{% endif %} href="{% url "shop:product_list" %}">
-                    <img class="w-8 md:w-10" src="/media/all_cat.png">
-                </a>
-            </li>
-            {% for c in categories %}
-                <li class="mx-4">
-                    <a {% if category.slug == c.slug %}class="text-red-400"{% endif %} href="{{ c.get_absolute_url }}">
-                        {% if c.icon %}
-                        <img class="w-8 md:w-10" src="{{ c.icon.url }}">
-                        {% else %}
-                        {{ c.name }}
-                        {% endif %}
+    <div class="mt-6">
+        <div class="" id="categories">
+            <ul class="flex justify-center">
+                <li class="mx-6">
+                    <a class="text-lg" {% if not category %} class="text-red-400 bg-yellow-50"{% endif %}
+                       href="{% url "shop:product_list" %}">
+                        <img class="w-8 md:w-10" src="/media/all_cat.png">
                     </a>
                 </li>
-            {% endfor %}
-        </ul>
-    </div>
-<div class="flex items-center justify-center">
-    <div class="grid grid-cols-2 gap-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6">
-        {% for product in products %}
-            <div class="md:w-44 lg:w-44 rounded bg-white p-2 m-4 border border-gray-50" style="box-shadow: 4px 4px 20px rgba(0, 0, 0, .05);">
-                <div class="flex justify-center md:w-full md:h-40">
-                    <a href="{{ product.get_absolute_url }}">
-                        <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44" loading="lazy" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-                    </a>
-                </div>
+                {% for c in categories %}
+                    <li class="mx-4">
+                        <a {% if category.slug == c.slug %}class="text-red-400"{% endif %}
+                           href="{{ c.get_absolute_url }}">
+                            {% if c.icon %}
+                                <img class="w-8 md:w-10" src="{{ c.icon.url }}">
+                            {% else %}
+                                {{ c.name }}
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h2 class="text-3xl text-center mt-4">
+                {% if category %}{{ category.name }}{% else %}Все наклейки{% endif %}
+            </h2>
+        </div>
+        <div class="flex items-center justify-center">
+            <div class="grid grid-cols-2 gap-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-6">
+                {% for product in products %}
+                    <div class="md:w-44 lg:w-44 rounded bg-white p-2 m-4 border border-gray-50"
+                         style="box-shadow: 4px 4px 20px rgba(0, 0, 0, .05);">
+                        <div class="flex justify-center md:w-full md:h-40">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44" loading="lazy" src="
 
-                <form class="flex-col mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
-                    <div class="flex justify-center rounded-full mx-4 shadow border border-gray-50 items-center align-items-center">
-                        <button class="flex" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
-                            </svg>
-                        </button>
-                        <input class="flex text-lg rounded-none w-12 md:w-16 text-center appearance-none bg-white" name="quantity" type="number" min="25" value="25" step="25" readonly>
-                        <button class="flex" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                        </button>
-                    </div>
+
+                                        {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                            </a>
+                        </div>
+
+                        <form class="flex-col mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
+                            <div class="flex justify-center rounded-full mx-4 shadow border border-gray-50 items-center align-items-center">
+                                <button class="flex" type="button"
+                                        onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M18 12H6"/>
+                                    </svg>
+                                </button>
+                                <input class="flex text-lg rounded-none w-12 md:w-16 text-center appearance-none bg-white"
+                                       name="quantity" type="number" min="25" value="25" step="25" readonly>
+                                <button class="flex" type="button"
+                                        onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                                    </svg>
+                                </button>
+                            </div>
                             {{ cart_product_form }}
                             {% csrf_token %}
-                            <button class="flex p-1 my-2 mx-auto w-28 md:w-32 shadow rounded font-normal justify-center align-items-center" type="submit">Добавить</button>
-                </form>
+                            <button class="flex p-1 my-2 mx-auto w-28 md:w-32 shadow rounded font-normal justify-center align-items-center"
+                                    type="submit">Добавить
+                            </button>
+                        </form>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
         </div>
     </div>
-</div>
 {% endblock %}
