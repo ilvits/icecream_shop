@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
 from orders.models import Order
 from .forms import UserCreateForm
 
-
+@login_required
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     return render(request,
@@ -17,7 +18,7 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy('accounts:login')
     template_name = 'registration/signup.html'
 
-
+@login_required
 def user_profile(request):
     user = None
     user = request.user
