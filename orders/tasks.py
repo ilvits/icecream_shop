@@ -13,10 +13,10 @@ def order_created(order_id, email):
     user_email = email
     order = Order.objects.get(id=order_id)
     order_items = Order.order_items
-    subject = 'Заказ номер {}'.format(order_id)
+    subject = 'Наклейки. Заказ номер {}'.format(order_id)
     html_message = render_to_string('mail_template.html', {'order': order, 'order_items': order_items})
     plain_message = strip_tags(html_message)
-    from_email = 'From <admin@ilvits.com>'
+    from_email = 'Наклейки <admin@ilvits.com>'
     to = user_email
 
     mail_sent = send_mail(subject, plain_message, from_email, [to], html_message=html_message)
