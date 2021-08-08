@@ -9,6 +9,8 @@ SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CELERY_BROKER_URL = 'amqp://localhost'
+
 ALLOWED_HOSTS = ['ilvits.com', 'www.ilvits.com', '45.148.30.212', 'localhost', '127.0.0.1']
 
 CART_SESSION_ID = 'cart'

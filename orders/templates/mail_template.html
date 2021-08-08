@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}My shop{% endblock %}</title>
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="{% static 'css/main.css' %}"
+    />
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+    />
+    <script
+            defer
+            src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"
+    ></script>
+</head>
+<body class="font-sans font-extralight text-gray-700 ">
+
+<div class="container mx-auto">
+  <div class="block px-8 w-full">
+            <h1 class="text-2xl font-normal">Заказ номер {{ order.id }}</h1>
+            <table class="block my-8">
+                <tr>
+                    <th class="px-4">Создан</th>
+                    <td>{{ order.created }}</td>
+                </tr>
+                <tr>
+                    <th class="px-4">Заказчик</th>
+                    <td>{{ order.owner.first_name }} {{ order.owner.last_name }}</td>
+                </tr>
+                <tr>
+                    <th class="px-4">E-mail</th>
+                    <td><a href="mailto:{{ order.owner.email }}">{{ order.owner.email }}</a></td>
+                </tr>
+                <tr>
+                    <th class="px-4">Cумма</th>
+                    <td>{{ order.get_total_cost }}</td>
+                </tr>
+                <tr>
+                    <th class="px-4">Статус</th>
+                    <td>{% if order.paid %}Оплачен{% else %}Ожидает оплаты{% endif %}</td>
+                </tr>
+            </table>
+            <div>
+                <div class="">
+                    <table class="block my-4">
+                        <h2 class="text-2xl font-normal">Состав заказа</h2>
+                        <thead>
+                        <tr class="px-4 border-b">
+                            <th class="px-4 text-left">Наклейки</th>
+                            <th class="px-4">Цена</th>
+                            <th class="px-4">Количество</th>
+                            <th class="px-4">Сумма</th>
+                        </tr>
+                        </thead>
+                        <tbody class="px-4">
+                        {% for item in order.items.all %}
+                            <tr class="row{% cycle "1" "2" %} border-b">
+                                <td class="px-4">{{ item.product.name }}</td>
+                                <td class="px-4">{{ item.price }}₽</td>
+                                <td class="px-4">{{ item.quantity }} шт.</td>
+                                <td class="px-4">{{ item.get_cost }}₽</td>
+                            </tr>
+                        {% endfor %}
+                        <tr class="total">
+                            <td class="py-4 text-xl">Итого:</td>
+                            <td class="py-4 text-xl"></td>
+                            <td class="py-4 text-xl"></td>
+                            <td class="px-4 text-xl font-normal">{{ order.get_total_cost }}₽</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
