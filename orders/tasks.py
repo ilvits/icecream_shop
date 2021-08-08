@@ -6,13 +6,12 @@ from .models import Order
 
 
 @shared_task
-def order_created(order_id, email):
+def order_created(order_id, user_email):
     """
     Задача для отправки уведомления по эл. почте при успешном создании заказа.
     """
-    user_email = email
     order = Order.objects.get(id=order_id)
-    order_items = Order.order_items
+    order_items = Order.get_order_items
     subject = 'Наклейки. Заказ номер {}'.format(order_id)
     html_message = render_to_string('mail_template.html', {'order': order, 'order_items': order_items})
     plain_message = strip_tags(html_message)
