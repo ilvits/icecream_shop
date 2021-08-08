@@ -1,43 +1,71 @@
 {% extends "shop/base.html" %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block title %}Оформление заказа{% endblock %}
 
 {% block content %}
-    <h1 class="font-bold uppercase text-2xl mb-10 text-center">Оформление заказа</h1>
-    <div class="">
-        <h3 class="text-center font-bold text-xl">Ваш заказ</h3>
-        <div class="flex justify-center my-4">
-            {% for item in cart %}
-                <div class="m-2 px-2">
-                    <img class="w-16" src="{{ item.product.image.url }}">
-                </div>
-            {% endfor %}
-        </div>
-        <p class="mb-4 text-center font-bold text-xl">Сумма: {{ cart.get_total_price }} руб.</p>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg border-t border-gray-50 md:max-w-sm mx-auto">
-    <form action="." method="post" class="px-8 pt-6 pb-8 mb-4 rounded">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-
-        {% for field in form.visible_fields %}
-        <div class="mb-5">
-            <label for="{{ field.id_for_label }}" class="block mb-2 font-bold text-gray-600">
-                {{ field.label }}
-            </label>
-            {%  render_field field|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" placeholder=field.label %}
-            {% for error in field.errors %}
-                <span class="text-sm text-red-400 mt-2">{{ error }}</span>
-            {% endfor %}
-        </div>
-    {% endfor %}
-        <input type="hidden" name="owner" value="{{ user.id }}">
-        <button class="bg-white border-t border-gray-100 hover:bg-gray-100 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded-lg ">
+  <h1 class="text-3xl m-4 font-normal text-center">Оформление заказа</h1>
+   <div class="flex justify-center items-start">
+    <div class="bg-white rounded-lg shadow-lg border-t border-gray-50 w-full md:max-w-lg">
+        <form action="." method="post" class="px-8 pt-6 pb-8 rounded">
+          {% csrf_token %}
+          {% for hidden in form.hidden_fields %}
+          {{ hidden }}
+          {% endfor %}
+          <div class="mb-5">
+            <p class="m-4">Получатель: {{ user.first_name}} {{ user.last_name }}</p>
+          </div>
+          <div class="mb-5">
+            <p class="m-4">Email: {{ user.email}}</p>
+          </div>
+          <div class="mb-5">
+            <select class="hidden" name="owner" required="" id="id_owner">
+              <option value="1" selected>{{ user.username }}</option>
+            </select>
+          </div>
+          <button class="mt-4 bg-white border-t border-gray-100 hover:bg-gray-100 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded-lg ">
             Сделать заказ
-        </button>
-    </form>
+          </button>
+        </form>
+      </div>
+
+      <div class="w-96 rounded border ml-16 pt-4">
+        <h3 class="text-center font-bold text-xl">Корзина</h3>
+        <div class="w-full mx-auto px-4">
+        {% for category in categories %}
+          {% if category.items.length > 0 %}
+          fsfsf
+          {% endif %}
+        {% endfor %}
+          {% for item in cart %}
+          {% with product=item.product %}
+          <!-- Карточка товара -->
+          <div class='relative flex bg-white border-b pt-2'>
+            <div class='flex-no-shrink px-2 items-align-center'>
+              <img alt='{{ product.name }}' class='w-14 block mx-auto' src='
+                        {% if product.image %}
+                            {{ product.image.url }}
+                        {% else %}
+                            {% static "img/no_image.png" %}
+                        {% endif %}'>
+            </div>
+            <div class='flex-1 card-block relative'>
+              <div class="">
+                <h4 class='font-light text-xl md:text-sm mt-2 mr-2'>{{ product.name }}</h4>
+                <p class='text-gray-500 text-sm'>{{ product.category }}</p>
+                <p class="text-sm text-gray-600 block px-2 pb-1 font-extralight text-right">
+                  <span class="text-black font-normal">{{ item.quantity }} шт.</span> | {{ item.total_price }}₽
+                </p>
+              </div>
+            </div>
+          </div>
+          {% endwith %}
+          {% endfor %}
+          <span class="w-full block text-right text-xl text-black mt-4">Общая сумма: <span class="font-normal">{{ cart.get_total_price }}₽</span></span>
+          <div class="flex justify-between w-full pt-2">
+          </div>
+        </div>
+      </div>
     </div>
 {% endblock %}
