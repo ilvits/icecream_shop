@@ -1,5 +1,7 @@
 {% extends "shop/base.html" %}
 {% load widget_tweaks %}
+{% load static %}
+{% load socialaccount %}
 
 {% block content %}
 
@@ -34,6 +36,7 @@
                     <button type="submit" class="bg-white border-t border-gray-100 hover:bg-gray-100 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded-lg">
                         Войти
                     </button>
+                    
                 </div>
                 <input type="hidden" name="next" value="{{ next }}">
             </form>
@@ -44,6 +47,9 @@
                 </div>
             </div>
         </div>
+<div class=" signin text-center">
 
+    <a href="{% provider_login_url 'google' %}" class="text-dark"><img src="{% static "btn_google_signin_light_normal_web@2x.png" %}" style="width:14rem; height:auto"></a>
+  </div>
     {% endif %}
 {% endblock %}

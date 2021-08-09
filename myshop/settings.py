@@ -28,14 +28,42 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Other Django apps
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
+    'allauth.socialaccount.providers.google',
+    
     # My apps
     'shop',
     'cart',
     'orders',
     'accounts',
 ]
+
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+AUTHENTICATION_BACKENDS = (
+ #used for default signin such as loggin into admin panel
+    'django.contrib.auth.backends.ModelBackend', 
+  
+ #used for social authentications
+    'allauth.account.auth_backends.AuthenticationBackend',
+ )
 
 ACCOUNT_ACTIVATION_DAYS = 2
 REGISTRATION_SALT = 'dewfmrtkgcnsemwru340'
