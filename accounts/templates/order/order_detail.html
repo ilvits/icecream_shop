@@ -4,56 +4,56 @@
 {% block content %}
     <div class="min-h-screen flex flex-row">
         {{ block.super }}
-        <div class="block px-8 w-full">
+        <div class="block py-8 px-4 w-full">
             <h1 class="text-2xl font-normal">Заказ номер {{ order.id }}</h1>
-            <table class="block my-8">
+            <table class="block mt-4 mb-12 text-left">
                 <tr>
-                    <th class="px-4">Создан</th>
+                    <th class="pr-4">Создан</th>
                     <td>{{ order.created }}</td>
                 </tr>
                 <tr>
-                    <th class="px-4">Заказчик</th>
+                    <th class="pr-4">Заказчик</th>
                     <td>{{ order.owner.first_name }} {{ order.owner.last_name }}</td>
                 </tr>
                 <tr>
-                    <th class="px-4">E-mail</th>
+                    <th class="pr-4">E-mail</th>
                     <td><a href="mailto:{{ order.owner.email }}">{{ order.owner.email }}</a></td>
                 </tr>
                 <tr>
-                    <th class="px-4">Cумма</th>
+                    <th class="pr-4">Cумма</th>
                     <td>{{ order.get_total_cost }}</td>
                 </tr>
                 <tr>
-                    <th class="px-4">Статус</th>
+                    <th class="pr-4">Статус</th>
                     <td>{% if order.paid %}Оплачен{% else %}Ожидает оплаты{% endif %}</td>
                 </tr>
             </table>
             <div>
-                <div class="">
-                    <table class="block my-4">
-                        <h2 class="text-2xl font-normal">Состав заказа</h2>
+                <div class="-m-4 md:ml-0">
+                    <div class="text-2xl font-normal">Состав заказа</div>
+                    <table class="block my-4 font-extralight">
                         <thead>
-                        <tr class="px-4 border-b">
-                            <th class="px-4 text-left">Наклейки</th>
-                            <th class="px-4">Цена</th>
-                            <th class="px-4">Количество</th>
-                            <th class="px-4">Сумма</th>
+                        <tr class="border-b text-left">
+                            <th class="px-2 text-sm md:text-lg">Наклейки</th>
+                            <th class="px-2 text-sm md:text-lg">Цена</th>
+                            <th class="px-2 text-sm md:text-lg">Кол-во</th>
+                            <th class="px-2 text-sm md:text-lg">Сумма</th>
                         </tr>
                         </thead>
-                        <tbody class="px-4">
+                        <tbody class="">
                         {% for item in order.items.all %}
-                            <tr class="row{% cycle "1" "2" %} border-b">
-                                <td class="px-4">{{ item.product.name }}</td>
-                                <td class="px-4">{{ item.price }}₽</td>
-                                <td class="px-4">{{ item.quantity }} шт.</td>
-                                <td class="px-4">{{ item.get_cost }}₽</td>
+                            <tr class="row{% cycle '1' '2' %} border-b">
+                                <td class="px-2 text-xs md:text-lg">{{ item.product.name }}</td>
+                                <td class="px-2 text-xs md:text-lg">{{ item.price }}₽</td>
+                                <td class="px-2 text-xs md:text-lg">{{ item.quantity }} шт.</td>
+                                <td class="px-2 text-xs md:text-lg">{{ item.get_cost }}₽</td>
                             </tr>
                         {% endfor %}
-                        <tr class="total">
-                            <td class="py-4 text-xl">Итого:</td>
-                            <td class="py-4 text-xl"></td>
-                            <td class="py-4 text-xl"></td>
-                            <td class="px-4 text-xl font-normal">{{ order.get_total_cost }}₽</td>
+                        <tr class="border-t-2 border-gray-300">
+                            <td class="px-2 text-xl font-normal">Итого:</td>
+                            <td></td>
+                            <td></td>
+                            <td class="px-2 text-lg font-normal">{{ order.get_total_cost }}₽</td>
                         </tr>
                         </tbody>
                     </table>
