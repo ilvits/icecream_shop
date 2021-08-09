@@ -59,22 +59,6 @@
                     </table>
                 </div>
             </div>
-            <div class="">
-                {% for category in categories %}
-                    {% for item in order.items.all %}
-                        {% if category.name in item.product.category.name %}
-                            {{ category.name }}<br>
-                            {{ item.product.name }}<br>
-                        {% endif %}
-                    {% endfor %}
-                    <br>
-                {% endfor %}
-            </div>
-
-
-
-
-
         </div>
     </div>
 {% endblock %}

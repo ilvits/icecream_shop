@@ -4,6 +4,8 @@
     Your shopping cart
 {% endblock %}
 {% block content %}
+    {% with total_items=cart|length %}
+    {% if cart|length > 0 %}
     <h1 class="font-bold uppercase text-2xl mb-10 text-center">Ваша корзина</h1>
 
     <div class="w-full md:w-2/4 mx-auto px-4">
@@ -48,4 +50,8 @@
         </button>
     </div>
 		</div>
+        {% else %}
+        <div class="m-8 text-center text-2xl">В вашей корзине ничего нет</div>
+    {% endif %}
+    {% endwith %}
 {% endblock %}
