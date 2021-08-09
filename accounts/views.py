@@ -3,14 +3,16 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
 from orders.models import Order
+from shop.views import Category
 from .forms import UserCreateForm
 
 @login_required
 def order_detail(request, order_id):
+    categories = Category.objects.all()
     order = get_object_or_404(Order, id=order_id)
     return render(request,
                   'order/order_detail.html',
-                  {'order': order})
+                  {'order': order, 'categories': categories})
 
 
 class SignUpView(generic.CreateView):

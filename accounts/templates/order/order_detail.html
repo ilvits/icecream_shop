@@ -40,7 +40,7 @@
                             <th class="px-2 text-sm md:text-lg">Сумма</th>
                         </tr>
                         </thead>
-                        <tbody class="">
+                        <tbody>
                         {% for item in order.items.all %}
                             <tr class="row{% cycle '1' '2' %} border-b">
                                 <td class="px-2 text-xs md:text-lg">{{ item.product.name }}</td>
@@ -59,6 +59,22 @@
                     </table>
                 </div>
             </div>
+            <div class="">
+                {% for category in categories %}
+                    {% for item in order.items.all %}
+                        {% if category.name in item.product.category.name %}
+                            {{ category.name }}<br>
+                            {{ item.product.name }}<br>
+                        {% endif %}
+                    {% endfor %}
+                    <br>
+                {% endfor %}
+            </div>
+
+
+
+
+
         </div>
     </div>
 {% endblock %}
