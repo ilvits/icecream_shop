@@ -4,9 +4,12 @@
     {% if category %}{{ category.title }}{% else %}Наклейки{% endif %}
 {% endblock %}
 {% block content %}
-<div id="Header" class="w-full md:w-2/3 mx-auto m-16 p-4 border border-gray-50 rounded bg-yellow-50">
-    <div class="text-3xl mb-4">Истинный вкус абсолютно натурального мороженого</div>
-    <p>Хотите, чтобы Вам было вкусно, красиво и удобно? Просто попробуйте наше мороженое или торт-мороженое ручной работы, и Вы поймете, это именно то, что Вы искали — тот самый вкус! Вам захочется ещё. И ещё.</p>
-<div class="p-4 m-4 mt-6 text-center rounded shadow font-normal bg-blue-200"><a href="shop">Заказать наклейки</a></div>
-</div>
+    <div id="Header" class="w-full md:w-2/3 mx-auto m-16 p-8 border border-gray-100 rounded shadow-xl">
+        <div class="text-3xl mb-4 font-normal">Истинный вкус абсолютно натурального мороженого</div>
+        <p>Хотите, чтобы Вам было вкусно, красиво и удобно? Просто попробуйте наше мороженое или торт-мороженое ручной
+            работы, и Вы поймете, это именно то, что Вы искали — тот самый вкус! Вам захочется ещё. И ещё.</p>
+        <a href="shop">
+            <div class="p-4 mt-6 text-center rounded shadow font-normal bg-blue-100 hover:bg-blue-200 transition ">Заказать наклейки</div>
+        </a>
+    </div>
 {% endblock %}
