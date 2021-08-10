@@ -18,6 +18,9 @@
             <div class="border-b py-6 font-bold text-black text-center text-xl tracking-widest uppercase">
                 С возвращением!
             </div>
+            <div class="flex justify-center mx-auto">
+                <a href="{% provider_login_url 'google' %}" class="text-dark"><img src="/media/btn_google_signin_light_normal_web@2x.png" style="width:14rem; height:auto"></a>
+            </div>
             <form class="bg-gray-50 px-10 py-10" method="post" action="{% url 'accounts:login' %}">
 
                 {% csrf_token %}
