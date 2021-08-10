@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.apple',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.yandex',
 ]
 
 SITE_ID = 1
@@ -56,13 +59,8 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     },
     'vk': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
+        'APP': {
+          }
     }
 }
 
