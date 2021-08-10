@@ -18,12 +18,14 @@
             <div class="border-b py-6 font-bold text-black text-center text-xl tracking-widest uppercase">
                 С возвращением!
             </div>
-            <div class="flex justify-center mx-auto">
-                <a href="{% provider_login_url 'google' %}" class="text-dark"><img src="/media/btn_google_signin_light_normal_web@2x.png" style="width:14rem; height:auto"></a>
+        <div class="flex justify-center align-items-center">
+            <div class="flex align-items-center">
+                <a href="{% provider_login_url 'google' %}"><img class="w-16 px-2" src="/media/btn_google_light_normal_ios.svg"></a>
             </div>
-            <div class="flex justify-center mx-auto">
-                <a href="{% provider_login_url 'vk' %}" class="text-dark"><img src="/media/btn_google_signin_light_normal_web@2x.png" style="width:14rem; height:auto"></a>
+            <div class="flex align-items-center">
+                <a href="{% provider_login_url 'vk' %}"><img class="w-14 pt-1 px-2" src="/media/VK_Compact_Logo.svg"></a>
             </div>
+        </div>
             <form class="bg-gray-50 px-10 py-10" method="post" action="{% url 'accounts:login' %}">
 
                 {% csrf_token %}
