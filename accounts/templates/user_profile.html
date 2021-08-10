@@ -6,9 +6,9 @@
     {{ block.super }}
     <div class="flex px-8 w-full">
         <div class="flex-wrap w-full mt-2 justify-center">
-            <span class="text-3xl">Привет, {{ user.socialaccount_set.all.0.extra_data.login }}</span>
+            <span class="text-3xl">Привет, {{ user.first_name }}</span>
             <div class="">
-                <img class="rounded-full " src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
+
 
                 {% for order in orders %}
                     <a href="{{ order.get_absolute_url }}">
