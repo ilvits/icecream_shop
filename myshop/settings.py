@@ -21,6 +21,12 @@ LOGOUT_REDIRECT_URL = 'accounts:login'
 # Application definition
 
 INSTALLED_APPS = [
+    # My apps
+    'shop',
+    'cart',
+    'orders',
+    'accounts',
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,12 +41,6 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
     'allauth.socialaccount.providers.google',
-    
-    # My apps
-    'shop',
-    'cart',
-    'orders',
-    'accounts',
 ]
 
 SITE_ID = 1
