@@ -22,11 +22,11 @@ from shop.views import Category
 
 
 @login_required
-def order_detail(request, order_id):
+def user_order_detail(request, order_id):
     categories = Category.objects.all()
     order = get_object_or_404(Order, id=order_id)
     return render(request,
-                  'order/order_detail.html',
+                  'order/user_order_detail.html',
                   {'order': order, 'categories': categories})
 
 

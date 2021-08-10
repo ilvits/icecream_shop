@@ -6,7 +6,7 @@ class UserCreateForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     email = forms.CharField(required=True)
-    
+
 
     class Meta:
         model = User
