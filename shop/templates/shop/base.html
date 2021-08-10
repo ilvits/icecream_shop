@@ -48,11 +48,18 @@
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4"
                    href="#">Контакты</a>
                 {%  if user.is_authenticated %}
-                    <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md items-right" href="{% url 'accounts:user_profile' %}">
-                        <svg class="flex h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </a>
+                    {% if user.socialaccount_set.all.0.get_avatar_url %}
+                        <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md items-right" href="{% url 'accounts:user_profile' %}">
+                            <img class="rounded-full h-7 w-7 object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
+                        </a>
+                    {% else %}
+                        <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md items-right" href="{% url 'accounts:user_profile' %}">
+                            <svg class="flex h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </a>
+                    {% endif %}
+
                 {% else %}
                     <a class="md:hidden mx-2 md:mx-0 px-4 py-2 mt-2 text-md" href="{% url 'accounts:login' %}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m10.998 16 5-4-5-4v3h-9v2h9z"></path><path d="M12.999 2.999a8.938 8.938 0 0 0-6.364 2.637L8.049 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051S20 10.13 20 12s-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637C21.063 16.665 22 14.405 22 12s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z"></path></svg>
