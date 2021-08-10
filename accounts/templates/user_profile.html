@@ -33,8 +33,12 @@
                     Last Name extra_data: {{ account.extra_data.last_name }}<br>
 
                     Pic: {{ account.get_avatar_url }}<br>
+
                     Dashboard Link:
                     {{ account.extra_data.link }}<br>
+
+                    email:
+                    {{ account.extra_data }}<br>
 
                 {% empty %}
 
