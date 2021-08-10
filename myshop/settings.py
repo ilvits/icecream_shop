@@ -64,6 +64,13 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+
+
 AUTHENTICATION_BACKENDS = (
     # used for default signin such as loggin into admin panel
     'django.contrib.auth.backends.ModelBackend',
