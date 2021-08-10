@@ -15,7 +15,7 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 
-from .forms import UserCreateForm
+from .forms import UserCreateForm, UserForm, ProfileForm
 from orders.models import Order
 from shop.views import Category
 from django.db import transaction
@@ -112,14 +112,14 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, _('сохранено!'))
+            messages.success(request, ('Your profile was successfully updated!'))
             return redirect('settings:profile')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, ('Please correct the error below.'))
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'edit_profile.html', {
+    return render(request, 'profiles/profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })
