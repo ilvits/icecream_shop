@@ -7,7 +7,7 @@ from shop import views
 from django.views.generic import RedirectView
 
 urlpatterns = [
-                  path('favicon.ico', RedirectView.as_view(url='/media/favicon.png')),
+                  path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'favicon/favicon.png')),
                   path('admin/', admin.site.urls),
                   path('', views.homepage, name='homepage'),
                   path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
