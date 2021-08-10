@@ -31,7 +31,7 @@
     <div class="w-full h-11 md:h-14 text-gray-700 bg-white border-b border-gray-100 sticky content-center top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-2 md:p-4 flex flex-row items-center justify-between">
-                <a href="/" class="text-lg font-semibold tracking-widest text-gray-900 uppercase">
+                <a href="{% url 'homepage' %}" class="text-lg font-semibold tracking-widest text-gray-900 uppercase">
                     500 Эскимо</a>
                 <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +42,7 @@
             <nav x-transition :class="{'flex': open, 'hidden': !open}" 
             class="w-64 absolute md:static right-0 top-11 rounded border-l border border-b border-gray-50 md:border-none md:shadow-none font-light flex-col flex-grow text-right pb-2 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-white backdrop-filter backdrop-blur-lg md:backdrop-blur-0 bg-opacity-40 md:bg-opacity-0">
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4"
-                   href="#">Главная</a>
+                   href="{% url 'homepage' %}">Главная</a>
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4"
                    href="{% url 'shop:product_list' %}">Сделать заказ</a>
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4"
