@@ -16,9 +16,11 @@
 
                     UID: {{ account.uid }}<br>
 
-                    Username: {{ account.extra_data.username }}<br>
+                    Username extra_data: {{ account.extra_data.username }}<br>
 
-                    Username: {{ account.extra_data.name }}<br>
+                    Username: {{ account.username }}<br>
+
+                    Username extra_data: {{ account.extra_data.name }}<br>
 
                     Username: {{ account.name }}<br>
 
@@ -26,6 +28,11 @@
 
                     Last Name: {{ account.last_name }}<br>
 
+                    First Name extra_data: {{ account.extra_data.first_name }}<br>
+
+                    Last Name extra_data: {{ account.extra_data.last_name }}<br>
+
+                    Pic: {{ account.get_avatar_url }}<br>
                     Dashboard Link:
                     {{ account.extra_data.link }}<br>
 
