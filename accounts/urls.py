@@ -5,6 +5,7 @@ from .views import SignUpView
 from . import views
 
 urlpatterns = [
+    path("edit/", views.update_profile, name="update_profile"),
     path("password_reset/", views.password_reset_request, name="password_reset"),
     path('password_reset/done/',
          auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'),
