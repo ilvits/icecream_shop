@@ -8,44 +8,7 @@
         <div class="flex-wrap w-full mt-2 justify-center">
             <span class="text-3xl">Привет, {{ user.first_name }}</span>
             <div class="">
-                {% for account in user.socialaccount_set.all %}
-
-                    {% comment %} show avatar from url {% endcomment %}
-
-                    {{ Account.provider }} Account Data <br>
-
-                    UID: {{ account.uid }}<br>
-
-                    Username extra_data: {{ account.extra_data.username }}<br>
-
-                    Username: {{ account.username }}<br>
-
-                    Username extra_data: {{ account.extra_data.name }}<br>
-
-                    Username: {{ account.name }}<br>
-
-                    First Name: {{ account.first_name }}<br>
-
-                    Last Name: {{ account.last_name }}<br>
-
-                    First Name extra_data: {{ account.extra_data.first_name }}<br>
-
-                    Last Name extra_data: {{ account.extra_data.last_name }}<br>
-
-                    Pic: {{ account.get_avatar_url }}<br>
-
-                    Dashboard Link:
-                    {{ account.extra_data.link }}<br>
-
-                    email:
-                    {{ account.extra_data }}<br>
-
-                {% empty %}
-
-                    you haven't any social account please
-
-                {% endfor %}
-
+                {{ user.socialaccount_set.all.0.extra_data }}
                 {% for order in orders %}
                     <a href="{{ order.get_absolute_url }}">
                         <div class="mb-8 mt-4 hover:shadow-2xl transform hover:scale-105 rounded border w-full max-w-md transition">
