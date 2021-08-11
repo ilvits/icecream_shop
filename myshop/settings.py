@@ -13,6 +13,13 @@ SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh
 
 
 CELERY_BROKER_URL = 'amqp://localhost'
+BROKER_URL = 'amqp://localhost'
+CELERY_RESULT_BACKEND = 'rpc://'
+CELERY_RESULT_PERSISTENT = False
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Moscow'
 
 ALLOWED_HOSTS = ['ilvits.com', 'www.ilvits.com', '45.148.30.212', 'localhost', '127.0.0.1']
 
