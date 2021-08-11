@@ -7,7 +7,7 @@
                 {% if user.socialaccount_set.all.0.get_avatar_url %}
                     <img class="rounded-full w-8 h-8 md:w-16 md:h-16 object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
                     {% elif user.profile.profile_picture %}
-                    <img class="rounded-full w-8 h-8 md:w-16 md:h-16 object-cover" src="{{ user.profile.profile_picture }}">
+                    <img class="rounded-full w-8 h-8 md:w-16 md:h-16 object-cover" src="{{ user.profile.profile_picture.url }}">
                     {% else %}
                     <img class="w-8 md:w-16" src="/media/logo.svg">
                 {% endif %}
