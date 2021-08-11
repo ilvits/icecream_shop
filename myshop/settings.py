@@ -1,13 +1,16 @@
 import os
 from pathlib import Path
 
+SITE_ID = 1
+DEBUG = True
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
 
 CELERY_BROKER_URL = 'amqp://localhost'
 
@@ -33,20 +36,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Other Django apps
     'django.contrib.sites',
+    # Other apps
+    'django_cleanup.apps.CleanupConfig',
+    'widget_tweaks',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'django_cleanup.apps.CleanupConfig',
-    'widget_tweaks',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.apple',
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.yandex',
-]
 
-SITE_ID = 1
+]
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -60,16 +63,13 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'vk': {
         'APP': {
-          }
+        }
     }
 }
 
-
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
-
 
 AUTHENTICATION_BACKENDS = (
     # used for default signin such as loggin into admin panel
@@ -140,7 +140,6 @@ DATABASES = {
         'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

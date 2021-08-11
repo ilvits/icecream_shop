@@ -18,7 +18,7 @@ def order_created(order_id, user_email):
     html_message = render_to_string('mail_template.html', {'order': order, 'order_items': order_items})
     plain_message = strip_tags(html_message)
     from_email = 'Наклейки <admin@ilvits.com>'
-    to = (user_email, settings.DEFAULT_FROM_EMAIL)
+    to = user_email
 
     mail_sent = send_mail(subject, plain_message, from_email, [to], html_message=html_message)
 
