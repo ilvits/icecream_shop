@@ -12,8 +12,8 @@ SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-CELERY_BROKER_URL = 'amqp://localhost'
-BROKER_URL = 'amqp://localhost'
+CELERY_BROKER_URL = 'amqp://ilvits@rabbit:5672'
+BROKER_URL = 'amqp://ilvits@rabbit:5672'
 CELERY_RESULT_BACKEND = 'rpc://'
 CELERY_RESULT_PERSISTENT = False
 CELERY_ACCEPT_CONTENT = ['application/json']
