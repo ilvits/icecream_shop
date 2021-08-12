@@ -19,9 +19,9 @@
           <div class="mb-5">
             <p class="m-4">Email: {{ user.email }}</p>
           </div>
-          <div class="mb-5">{{ user.id }}
+          <div class="mb-5">
             <select class="hidden" name="owner" required="" id="id_owner">
-              <option value="1" selected>{{ user.id }}</option>
+              <option value="{{ user.id }}" selected>{{ user.username }}</option>
             </select>
           </div>
           <button class="mt-4 bg-white border-t border-gray-100 hover:bg-gray-100 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded-lg" type="submit">
