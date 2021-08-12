@@ -108,7 +108,7 @@ def password_reset_request(request):
 @transaction.atomic
 def edit_profile(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
+        user_form = UserForm(request.POST, request.FILES or None, instance=request.user)
         profile_form = ProfileForm(request.POST, request.FILES or None, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
