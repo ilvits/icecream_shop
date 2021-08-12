@@ -20,8 +20,10 @@ defusedxml==0.7.1
 Django==3.2.5
 django-allauth==0.45.0
 django-anymail==8.4
+django-celery-beat==2.2.1
 django-cleanup==5.2.0
 django-registration==3.2
+django-timezone-field==4.2.1
 django-widget-tweaks==1.4.8
 flower==1.0.0
 gunicorn==20.1.0
@@ -40,6 +42,7 @@ psycopg2-binary==2.9.1
 py-moneyed==1.2
 pycparser==2.20
 PyJWT==2.1.0
+python-crontab==2.5.1
 python-dateutil==2.8.2
 python-slugify==5.0.2
 python3-openid==3.2.0
