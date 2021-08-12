@@ -1,0 +1,11 @@
+{% if form.errors %}
+                    <div class="text-sm text-red-400 text-center mb-6">
+                    <p>ошибка формы</p>
+{{ form.errors.as_data }}
+
+
+{% for error in form.errors %}
+{{ error.data }} <br>
+{% endfor %}
+                    </div>
+                {% endif %}
