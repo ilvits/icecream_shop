@@ -10,7 +10,7 @@ from django.conf import settings
 def send_contact_form(user, email, message):
     subject = 'Сообщение с сайта'
     html_message = render_to_string('message_mail_template.html',
-                                    {'user': user,
+                                    {'name': user,
                                      'message': message,
                                      'email': email
                                      })
