@@ -23,8 +23,8 @@ class Order(models.Model):
 
     def get_absolute_url(self):
         return reverse('accounts:user_order_detail',
-                        args=[self.id])
-    
+                       args=[self.id])
+
     def get_order_items(self):
         order_items = self.items.all()
         return order_items
@@ -35,8 +35,6 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
-    class Meta:
-        ordering = ['product.category']
 
     def __str__(self):
         return '{}'.format(self.id)
