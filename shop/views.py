@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from .tasks import send_contact_form
@@ -45,6 +46,7 @@ def contact_form(request):
     message = request.POST.get('message')
     if request.method == 'POST':
         send_contact_form.delay(user, email, message)
+        messages.success(request, 'Ваше сообщение отправлено!')
         return render(request, 'shop/contact.html',
                       {'message': message})
 
