@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}My shop{% endblock %}</title>
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="{% static 'css/main.css' %}"
+    />
+</head>
+<body class="font-sans font-extralight text-gray-700 ">
+
+<div class="container mx-auto">
+    <div class="block px-8 w-full">
+test!! {{ message }}
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from .tasks import send_contact_form
 
 from .models import Category, Product
 
@@ -36,3 +37,16 @@ def product_detail(request, product_id, slug):
     cart_product_form = CartAddProductForm()
     return render(request, 'shop/product/detail.html', {'product': product,
                                                         'cart_product_form': cart_product_form})
+
+
+def contact_form(request):
+    user = request.user
+    email = request.POST.get('email')
+    message = request.POST.get('message')
+    if request.method == 'POST':
+        send_contact_form.delay(user, email, message)
+        return render(request, 'shop/contact.html',
+                      {'message': message})
+
+    else:
+        return render(request, 'shop/contact.html')

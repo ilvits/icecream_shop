@@ -15,6 +15,7 @@ urlpatterns = [
                   path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
                   path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
                   path('shop/', include(('shop.urls', 'shop'), namespace='shop')),
+                  path("contact/", views.contact_form, name="contact"),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

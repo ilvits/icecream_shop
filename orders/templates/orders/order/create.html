@@ -24,7 +24,7 @@
                         <option value="{{ user.id }}" selected>{{ user.username }}</option>
                     </select>
                 </div>
-                <button class="mt-4 bg-white border-t border-gray-100 hover:bg-gray-100 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded-lg"
+                <button class="mt-4 bg-white border-t border-gray-100 hover:bg-gray-50 w-full p-4 text-sm text-black uppercase font-bold tracking-wider shadow-md rounded"
                         type="submit">
                     Сделать заказ
                 </button>
@@ -41,7 +41,7 @@
                             {% if product.category == category %}
                                 <!-- Карточка товара -->
                                 <div class='relative flex bg-white border-b border-gray-100 pt-2'>
-                                    <div class='flex-no-shrink px-2 items-align-center'>
+                                    <div class='flex-no-shrink px-2 items-align-center items-center'>
                                         <img alt='{{ product.name }}' class='w-10 block mx-auto mt-1' src='
                         {% if product.image %}
                             {{ product.image.url }}

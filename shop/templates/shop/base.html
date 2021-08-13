@@ -46,7 +46,7 @@
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4"
                    href="{% url 'shop:product_list' %}">Сделать заказ</a>
                 <a class="mx-2 md:mx-0 px-4 py-2 mt-2 text-md rounded-lg md:mt-0 md:ml-4"
-                   href="#">Контакты</a>
+                   href="{% url 'contact' %}">Контакты</a>
                 {%  if user.is_authenticated %}
                     {% if user.socialaccount_set.all.0.get_avatar_url %}
                         <a class="flex md:hidden mx-2 md:mx-0 px-4 py-2 mt-2" href="{% url 'accounts:user_profile' %}">
