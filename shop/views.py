@@ -40,7 +40,7 @@ def product_detail(request, product_id, slug):
 
 
 def contact_form(request):
-    user = request.user.username
+    user = request.POST.get('name')
     email = request.POST.get('email')
     message = request.POST.get('message')
     if request.method == 'POST':
