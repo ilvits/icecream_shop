@@ -23,11 +23,17 @@ from django.db import transaction
 
 @login_required
 def user_order_detail(request, order_id):
-    categories = Category.objects.all()
     order = get_object_or_404(Order, id=order_id)
+    categories = Category.objects.all()
+    category_set = []
+    for category in categories:
+        for item in order.items.all():
+            if item.product.category == category:
+                category_set.append(category)
+
     return render(request,
                   'order/user_order_detail.html',
-                  {'order': order, 'categories': categories})
+                  {'order': order, 'category_set': category_set})
 
 
 class SignUpView(generic.CreateView):

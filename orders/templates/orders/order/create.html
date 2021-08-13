@@ -33,13 +33,11 @@
       <div class="w-96 rounded border ml-16 hidden md:block">
         <h3 class="text-center font-normal text-2xl py-4">Корзина</h3>
         <div class="w-full mx-auto px-4">
-        {% for category in categories %}
-          {% if category.items.length > 0 %}
-          fsfsf
-          {% endif %}
-        {% endfor %}
+            {% for category in category_set %}
+            {{ category }} <br>
           {% for item in cart %}
           {% with product=item.product %}
+              {% if product.category == category %}
           <!-- Карточка товара -->
           <div class='relative flex bg-white border-b pt-2'>
             <div class='flex-no-shrink px-2 items-align-center'>
@@ -60,8 +58,10 @@
               </div>
             </div>
           </div>
+              {% endif %}
           {% endwith %}
           {% endfor %}
+        {% endfor %}
           <span class="w-full block text-right text-xl text-black mt-4">Общая сумма: <span class="font-normal">{{ cart.get_total_price }}₽</span></span>
           <div class="flex justify-between w-full pt-2">
           </div>

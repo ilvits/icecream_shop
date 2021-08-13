@@ -13,6 +13,11 @@ from shop.models import Category
 def order_create(request):
     cart = Cart(request)
     categories = Category.objects.all()
+    category_set = []
+    for c in categories:
+        for item in cart:
+            if item['product'].category == c:
+                category_set.append(c)
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -37,4 +42,4 @@ def order_create(request):
     else:
         form = OrderCreateForm
     return render(request, 'orders/order/create.html',
-                  {'cart': cart, 'form': form, 'categories': categories})
+                  {'cart': cart, 'form': form, 'category_set': category_set})
