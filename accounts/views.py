@@ -28,7 +28,7 @@ def user_order_detail(request, order_id):
     category_set = []
     for category in categories:
         for item in order.items.all():
-            if item.product.category == category:
+            if item.product.category == category and category not in category_set:
                 category_set.append(category)
 
     return render(request,

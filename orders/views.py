@@ -16,7 +16,7 @@ def order_create(request):
     category_set = []
     for c in categories:
         for item in cart:
-            if item['product'].category == c:
+            if item['product'].category == c and c not in category_set:
                 category_set.append(c)
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
