@@ -11,7 +11,7 @@ class Order(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('owner',)
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
 
