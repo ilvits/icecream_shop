@@ -11,7 +11,8 @@ def send_contact_form(user, email, message):
     subject = 'Сообщение с сайта'
     html_message = render_to_string('message_mail_template.html',
                                     {'user': user,
-                                     'message': message
+                                     'message': message,
+                                     'email': email
                                      })
     plain_message = strip_tags(html_message)
     from_email = email
