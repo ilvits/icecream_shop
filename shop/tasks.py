@@ -16,7 +16,7 @@ def send_contact_form(user, email, message):
                                      })
     plain_message = strip_tags(html_message)
     from_email = 'admin@ilvits.com'
-    to = ['ilvits@yandex.ru',]
+    to = ['ilvits@yandex.ru', ]
     logger = get_task_logger(__name__)
     mail_sent = send_mail(subject, plain_message, from_email, [to], html_message=html_message)
     logger.info("Sent contact form e-mails ;)")
