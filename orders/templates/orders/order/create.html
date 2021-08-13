@@ -40,9 +40,9 @@
                         {% with product=item.product %}
                             {% if product.category == category %}
                                 <!-- Карточка товара -->
-                                <div class='relative flex bg-white border-b border-gray-100 pt-2 pb-1'>
+                                <div class='relative flex bg-white border-b border-gray-100 pt-2'>
                                     <div class='flex-no-shrink px-2 items-align-center'>
-                                        <img alt='{{ product.name }}' class='w-14 block mx-auto' src='
+                                        <img alt='{{ product.name }}' class='w-10 block mx-auto mt-1' src='
                         {% if product.image %}
                             {{ product.image.url }}
                         {% else %}
@@ -51,8 +51,8 @@
                                     </div>
                                     <div class='flex-1 card-block relative'>
                                         <div class="">
-                                            <h4 class='text-xl md:text-md mx-2 mt-3'>{{ product.name }}</h4>
-                                            <p class="text-sm text-gray-600 block px-2 pb-1 font-extralight text-right">
+                                            <h4 class='text-xl md:text-md mx-1 mt-2'>{{ product.name }}</h4>
+                                            <p class="text-sm text-gray-600 block px-2 font-extralight text-right">
                                                 <span class="text-black font-normal">{{ item.quantity }} шт.</span>
                                                 | {{ item.total_price }}₽
                                             </p>
