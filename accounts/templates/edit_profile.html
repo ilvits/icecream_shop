@@ -6,7 +6,7 @@
 {% block content %}
     <div class="min-h-screen flex flex-row items-start">
     {{ block.super }}
-<div class="w-4/6 p-4 bg-white rounded-lg shadow-lg border-t border-gray-50 md:max-w-sm mx-auto mb-8">
+<div class="w-4/6 p-4 bg-white rounded-lg shadow-lg border-t border-gray-50 md:max-w-sm mx-auto m-8">
 <form method="post" enctype="multipart/form-data" >
   {% csrf_token %}
  {% for field in user_form %}
@@ -14,7 +14,7 @@
                     <label for="{{ field.id_for_label }}" class="block mb-2 font-normal text-gray-600">
                         {{ field.label }}
                     </label>
-                    {%  render_field field|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" placeholder=field.label %}
+                    {%  render_field field|add_class:"border border-gray-200 p-3 w-full rounded mb-" placeholder=field.label %}
                     {% for error in field.errors %}
                         <span class="text-sm text-red-400 mt-8">{{ error }}</span>
                     {% endfor %}
@@ -30,7 +30,7 @@
                     <label for="{{ field.id_for_label }}" class="block mb-2 font-normal text-gray-600">
                         {{ field.label }}
                     </label>
-                    {%  render_field field|add_class:"border border-gray-300 shadow p-3 w-full rounded mb-" placeholder=field.label %}
+                    {%  render_field field|add_class:"border border-gray-200 p-3 w-full rounded mb-" placeholder=field.label %}
                     {% for error in field.errors %}
                         <span class="text-sm text-red-400 mt-8">{{ error }}</span>
                     {% endfor %}
