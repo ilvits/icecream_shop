@@ -46,8 +46,10 @@
                     <div class="md:w-44 lg:w-44 rounded bg-white p-2 m-4 border border-gray-50"
                          style="box-shadow: 4px 4px 20px rgba(0, 0, 0, .05);">
                         <div class="flex justify-center md:w-full md:h-40">
-                                <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44" loading="lazy" src="
+                            <a href="{{ product.get_absolute_url }}">
+                                <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44 " loading="lazy" src="
                                         {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                            </a>
                         </div>
 
                         <form class="flex-col mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
