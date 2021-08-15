@@ -42,29 +42,53 @@
         </div>
 
 
-<!-- component -->
-<section class="container px-6 py-4 mx-auto">
-  <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
-{% for product in products %}
-    <!-- Card -->
-    <div class="flex items-center p-4 bg-white border-1 border-gray-200 rounded-lg shadow-md dark:bg-gray-800">
-      <div class=" mr-4 text-white rounded-full">
-        <img alt="{{ product.name }}" class="w-16 h-16" loading="lazy" src="
-                                        {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-  </div>
-      <div>
-        <p class="mb-2 text-md md:text-sm font-medium text-gray-900">{{ product.name }}</p>
-        <p class="text-sm font-normal text-gray-800"> - 25 + добавить</p>
-      </div>
-    </div>
-{% endfor %}
-  </div>
-</section>
+        <!-- component -->
+        <section class="container px-6 py-4 mx-auto">
+            <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
+                {% for product in products %}
+                    <!-- Card -->
+                    <div class="flex items-center p-4 bg-white border-1 border-gray-200 rounded-lg shadow-md dark:bg-gray-800">
+                        <div class=" mr-4 text-white rounded-full">
+                            <img alt="{{ product.name }}" class="w-16 h-16" loading="lazy" src="
 
-
-    
-
-
+                                    {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                        </div>
+                        <div>
+                            <p class="mb-2 text-md md:text-sm font-medium text-gray-900">{{ product.name }}</p>
+                            <p class="text-sm font-normal text-gray-800">
+                            <form class="flex-col mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
+                                <div class="flex justify-center rounded-full shadow border border-gray-50 items-center align-items-center">
+                                    <button class="flex" type="button"
+                                            onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M18 12H6"></path>
+                                        </svg>
+                                    </button>
+                                    <input class="flex text-lg rounded-none w-12 text-center appearance-none bg-white"
+                                           name="quantity" type="number" min="25" value="25" step="25" readonly>
+                                    <button class="flex" type="button"
+                                            onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <button class="flex p-1 my-2 shadow rounded font-normal justify-center align-items-center"
+                                        type="submit">Добавить
+                                </button>
+                            </form>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
 
 
         <div class="flex items-center justify-center">
@@ -75,6 +99,7 @@
                         <div class="flex justify-center md:w-full h-40">
                             <a href="{{ product.get_absolute_url }}">
                                 <img alt="{{ product.name }}" class="w-full md:w-44 lg:w-44 " loading="lazy" src="
+
                                         {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                             </a>
                         </div>
