@@ -40,6 +40,33 @@
                 {% if category %}{{ category.name }}{% else %}Все наклейки{% endif %}
             </h2>
         </div>
+
+
+<!-- component -->
+<section class="container px-6 py-4 mx-auto">
+  <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
+{% for product in products %}
+    <!-- Card -->
+    <div class="flex items-center p-4 bg-white border-1 border-gray-200 rounded-lg shadow-md dark:bg-gray-800">
+      <div class=" mr-4 text-white rounded-full">
+        <img alt="{{ product.name }}" class="w-16 h-16" loading="lazy" src="
+                                        {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+  </div>
+      <div>
+        <p class="mb-2 text-md md:text-sm font-medium text-gray-900">{{ product.name }}</p>
+        <p class="text-sm font-normal text-gray-800"> - 25 + добавить</p>
+      </div>
+    </div>
+{% endfor %}
+  </div>
+</section>
+
+
+    
+
+
+
+
         <div class="flex items-center justify-center">
             <div class="grid grid-cols-2 gap-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                 {% for product in products %}
