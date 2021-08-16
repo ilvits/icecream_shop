@@ -56,9 +56,9 @@
                         <div>
                             <p class="mb-2 text-md md:text-sm font-medium text-gray-900">{{ product.name }}</p>
                             <p class="text-sm font-normal text-gray-800">
-                            <form class="flex-col mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
-                                <div class="flex justify-center rounded-full shadow border border-gray-50 items-center align-items-center">
-                                    <button class="flex" type="button"
+                            <form class="flex mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
+                                <div class="flex justify-center w-24 h-8 rounded-full shadow border border-gray-50 items-center align-items-center">
+                                    <button class="" type="button"
                                             onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor">
@@ -66,9 +66,9 @@
                                                   d="M18 12H6"></path>
                                         </svg>
                                     </button>
-                                    <input class="flex text-lg rounded-none w-12 text-center appearance-none bg-white"
+                                    <input class=" text-lg rounded-none w-8 text-center appearance-none bg-white"
                                            name="quantity" type="number" min="25" value="25" step="25" readonly>
-                                    <button class="flex" type="button"
+                                    <button class="" type="button"
                                             onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor">
