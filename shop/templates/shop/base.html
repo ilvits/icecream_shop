@@ -32,11 +32,11 @@
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-2 md:p-4 flex flex-row items-center justify-between">
                 <a href="{% url 'homepage' %}" class="text-lg font-semibold tracking-widest text-gray-900 uppercase">
-                    <img class="w-16 px-8" src="/media/logo.svg">
+                    <img class="w-7 mx-8" src="/media/logo.svg">
                 </a>
                 <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
@@ -51,7 +51,7 @@
                 {%  if user.is_authenticated %}
                     {% if user.socialaccount_set.all.0.get_avatar_url %}
                         <a class="flex md:hidden mx-2 md:mx-0 px-4 py-2 mt-2" href="{% url 'accounts:user_profile' %}">
-                            <img class="rounded-full flex h-7 w-7 ml-24 mr-2 object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
+                            <img class="rounded-full flex h-7 w-7 ml-24 mr-2 object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Аватар">
                             <div>Профиль</div>
                         </a>
                     {% else %}

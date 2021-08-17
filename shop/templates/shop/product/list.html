@@ -20,7 +20,7 @@
                 <li class="mx-6">
                     <a class="text-lg" {% if not category %} class="text-red-400 bg-yellow-50"{% endif %}
                        href="{% url "shop:product_list" %}">
-                        <img class="w-8 md:w-10" src="/media/all_cat.png">
+                        <img class="w-8 md:w-10" src="/media/all_cat.png" alt="">
                     </a>
                 </li>
                 {% for c in categories %}
@@ -28,7 +28,7 @@
                         <a {% if category.slug == c.slug %}class="text-red-400"{% endif %}
                            href="{{ c.get_absolute_url }}">
                             {% if c.icon %}
-                                <img class="w-8 md:w-10" src="{{ c.icon.url }}">
+                                <img class="w-8 md:w-10" src="{{ c.icon.url }}" alt="Категория">
                             {% else %}
                                 {{ c.name }}
                             {% endif %}
@@ -40,37 +40,40 @@
                 {% if category %}{{ category.name }}{% else %}Все наклейки{% endif %}
             </h2>
         </div>
-
-
-        <!-- component -->
+        <!-- Товары -->
         <section class="container px-6 py-4 mx-auto">
-            <div class="grid gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-4 mb-8 md:grid-cols-2 lg:grid-cols-4">
                 {% for product in products %}
-                    <!-- Card -->
-                    <div class="flex items-center p-4 bg-white border-1 border-gray-200 rounded-lg shadow-md dark:bg-gray-800">
-                        <div class=" mr-4 text-white rounded-full">
-                            <img alt="{{ product.name }}" class="w-16 h-16" loading="lazy" src="
-
-                                    {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                    <!-- Карточка товара -->
+                    <div class="flex items-center bg-white border border-gray-100 rounded shadow-md dark:bg-gray-800">
+                        <div class="m-4 rounded-full flex-none">
+                            <img
+                                    alt="{{ product.name }}"
+                                    class="w-16 h-16 object-contain"
+                                    loading="lazy"
+                                    src="
+                                        {% if product.image %}{{ product.image.url }}
+                                        {% else %}{% static "img/no_image.png" %}
+                                        {% endif %}">
                         </div>
-                        <div>
+                        <div class="flex-grow mr-4">
                             <p class="mb-2 text-md md:text-sm font-medium text-gray-900">{{ product.name }}</p>
-                            <p class="text-sm font-normal text-gray-800">
-                            <form class="flex mt-2" action="{% url "cart:cart_add" product.id %}" method="post">
-                                <div class="flex justify-center w-24 h-8 rounded-full shadow border border-gray-50 items-center align-items-center">
-                                    <button class="" type="button"
+                            <p class="text-sm font-normal text-gray-800"></p>
+                            <form class="flex mt-3 justify-end" action="{% url "cart:cart_add" product.id %}" method="post">
+                                <div class="flex justify-center px-2 h-7 rounded-full shadow border border-gray-50 items-center align-items-center">
+                                    <button class="h-4 w-4" type="button"
                                             onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M18 12H6"></path>
                                         </svg>
                                     </button>
-                                    <input class=" text-lg rounded-none w-8 text-center appearance-none bg-white"
+                                    <input class=" text-sm rounded-none w-8 text-center text-sm appearance-none bg-white"
                                            name="quantity" type="number" min="25" value="25" step="25" readonly>
-                                    <button class="" type="button"
+                                    <button class="h-4 w-4" type="button"
                                             onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -79,7 +82,7 @@
                                 </div>
                                 {{ cart_product_form }}
                                 {% csrf_token %}
-                                <button class="flex p-1 px-2 mx-2 shadow rounded font-normal justify-center align-items-center"
+                                <button class="flex px-2 mx-2 shadow rounded font-normal justify-center align-items-center"
                                         type="submit">Добавить
                                 </button>
                             </form>
