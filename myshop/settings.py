@@ -11,16 +11,17 @@ SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
-BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-CELERY_RESULT_BACKEND = 'rpc://'
-CELERY_RESULT_PERSISTENT = False
+# CELERY SETTINGS
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-ALLOWED_HOSTS = ['icecream.ilvits.com', 'localhost', '127.0.0.1']
+
+
+ALLOWED_HOSTS = ['icecream.ilvits.com', '45.156.25.29' , 'localhost', '127.0.0.1']
 
 CART_SESSION_ID = 'cart'
 
@@ -84,7 +85,7 @@ AUTHENTICATION_BACKENDS = (
     # used for social authentications
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
@@ -140,7 +141,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'icecream',
-        'USER': 'ilvits',
+        'USER': 'icecream',
         'PASSWORD': '5123789LviTs',
         'HOST': 'localhost',
         'PORT': '',
