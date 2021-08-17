@@ -19,9 +19,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-
-
-ALLOWED_HOSTS = ['icecream.ilvits.com', '45.156.25.29' , 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['icecream.ilvits.com', '45.156.25.29', 'localhost', '127.0.0.1']
 
 CART_SESSION_ID = 'cart'
 
@@ -85,7 +83,7 @@ AUTHENTICATION_BACKENDS = (
     # used for social authentications
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25

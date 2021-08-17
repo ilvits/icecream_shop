@@ -6,17 +6,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-# def gravatar_url(email, size=40):
-#     default = "https://example.com/static/images/defaultavatar.jpg"
-#     return "https://www.gravatar.com/avatar/%s?%s" % (
-#         hashlib.md5(email.lower()).hexdigest(), urllib.urlencode({'d': default, 's': str(size)}))
-#
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(
-        upload_to='images/profile_pictures',
-        default='images/profile_pictures/default_picture.jpg',
+        upload_to='media/images/profile_pictures',
         blank=True
     )
 
