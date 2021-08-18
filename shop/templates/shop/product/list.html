@@ -49,7 +49,7 @@
                         <div class="m-2 my-auto rounded-full flex-none items-center">
                             <img
                                     alt="{{ product.name }}"
-                                    class="h-24 object-contain"
+                                    class="h-16 object-contain"
                                     loading="lazy"
                                     src="
                                         {% if product.image %}{{ product.image.url }}
@@ -57,7 +57,7 @@
                                         {% endif %}">
                         </div>
                         <div class="flex-grow mr-4 place-content-between">
-                            <p class="m-1 mt-2 text-lg font-light md:text-md leading-tight text-gray-900">{{ product.name }}</p>
+                            <p class="m-1 mt-2 font-extralight text-lg md:text-md leading-tight text-gray-900">{{ product.name }}</p>
                             <p class="ml-1 text-sm text-gray-600">{{ product.category }}</p>
                             <form class="flex absolute bottom-3 right-1" action="{% url "cart:cart_add" product.id %}" method="post">
                                 <div class="flex justify-center px-2 h-7 rounded-full shadow border border-gray-50 items-center align-items-center">
