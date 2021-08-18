@@ -31,7 +31,7 @@
     <div class="w-full h-11 md:h-14 text-gray-700 bg-white border-b border-gray-100 sticky content-center top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-2 md:p-4 flex flex-row items-center justify-between">
-                <a href="{% url 'homepage' %}" class="text-lg font-semibold tracking-widest text-gray-900 uppercase">
+                <a href="{% url 'homepage' %}" class="">
                     <img class="w-7 mx-8" src="/media/logo.svg">
                 </a>
                 <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
