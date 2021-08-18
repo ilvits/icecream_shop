@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Other apps
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
+    'silk',
 
     'allauth',
     'allauth.account',
@@ -109,6 +110,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'myshop.urls'
