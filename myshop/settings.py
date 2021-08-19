@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 SITE_ID = 1
-DEBUG = False
+DEBUG = True
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

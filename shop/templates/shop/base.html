@@ -29,7 +29,7 @@
     ></script>
 </head>
 <body class="font-sans font-extralight text-gray-700 ">
-{% if user.is_authenticated %}
+{#{% if user.is_authenticated %}#}
     <div class="w-full h-11 md:h-14 text-gray-700 bg-white border-b border-gray-100 sticky content-center top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
         <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-2 md:p-4 flex flex-row items-center justify-between">
@@ -106,7 +106,7 @@
             {% endif %}
         </div>
     </div>
-{% endif %}
+{#{% endif %}#}
     <div class="container mx-auto">
         {% if messages %}
             <ul class="messages w-96 mx-auto mt-4">
