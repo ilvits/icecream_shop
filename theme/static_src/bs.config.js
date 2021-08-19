@@ -16,7 +16,7 @@ const tailwindConfig = require('./tailwind.config.js');
 
 module.exports = {
     port: 8383,
-    ui: true,
+    ui: false,
     logSnippet: false,
     open: false,
     reloadOnRestart: true,
