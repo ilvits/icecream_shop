@@ -21,10 +21,18 @@ CELERY_TIMEZONE = 'Europe/Moscow'
 
 ALLOWED_HOSTS = ['icecream.ilvits.com', '45.156.25.29', 'localhost', '127.0.0.1']
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 CART_SESSION_ID = 'cart'
 
 LOGIN_REDIRECT_URL = 'accounts:user_profile'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+
+
+TAILWIND_APP_NAME = 'theme'
+
 
 # Application definition
 
@@ -46,6 +54,8 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
     'silk',
+    'tailwind',
+    'theme',
 
     'allauth',
     'allauth.account',
@@ -56,6 +66,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
 
 ]
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
