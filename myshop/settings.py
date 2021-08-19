@@ -32,6 +32,7 @@ LOGOUT_REDIRECT_URL = 'accounts:login'
 
 
 TAILWIND_APP_NAME = 'theme'
+TAILWIND_DEV_MODE = 'PRODUCTION'
 
 
 # Application definition
