@@ -44,10 +44,10 @@ class ProductListView(
         if create_serializer.is_valid():
 
             # If user data is valid, create a new Product item record in the database
-            Product_item_object = create_serializer.save()
+            product_item_object = create_serializer.save()
 
             # Serialize the new Product item from a Python object to JSON format
-            read_serializer = ProductSerializer(Product_item_object)
+            read_serializer = ProductSerializer(product_item_object)
 
             # Return a HTTP response with the newly created Product item data
             return Response(read_serializer.data, status=201)
@@ -58,22 +58,22 @@ class ProductListView(
     def put(self, request, id=None):
         try:
             # Check if the Product item the user wants to update exists
-            Product_item = Product.objects.get(id=id)
+            product_item = Product.objects.get(id=id)
         except Product.DoesNotExist:
             # If the Product item does not exist, return an error response
             return Response({'errors': 'This Product item does not exist.'}, status=400)
 
         # If the Product item does exists, use the serializer to validate the updated data
-        update_serializer = ProductSerializer(Product_item, data=request.data)
+        update_serializer = ProductSerializer(product_item, data=request.data)
 
         # If the data to update the Product item is valid, proceed to saving data to the database
         if update_serializer.is_valid():
 
             # Data was valid, update the Product item in the database
-            Product_item_object = update_serializer.save()
+            product_item_object = update_serializer.save()
 
             # Serialize the Product item from Python object to JSON format
-            read_serializer = ProductSerializer(Product_item_object)
+            read_serializer = ProductSerializer(product_item_object)
 
             # Return a HTTP response with the newly updated Product item
             return Response(read_serializer.data, status=200)
@@ -84,13 +84,13 @@ class ProductListView(
     def delete(self, request, id=None):
         try:
             # Check if the Product item the user wants to update exists
-            Product_item = Product.objects.get(id=id)
+            product_item = Product.objects.get(id=id)
         except Product.DoesNotExist:
             # If the Product item does not exist, return an error response
             return Response({'errors': 'This Product item does not exist.'}, status=400)
 
         # Delete the chosen Product item from the database
-        Product_item.delete()
+        product_item.delete()
 
         # Return a HTTP response notifying that the Product item was successfully deleted
         return Response(status=204)

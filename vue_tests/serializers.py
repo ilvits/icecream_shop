@@ -5,7 +5,7 @@ from shop.models import Category, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category_name = serializers.RelatedField(source='product.category', read_only=True)
+    category = serializers.CharField(max_length=1000, required=True)
     name = serializers.CharField(max_length=1000, required=True)
 
     def create(self, validated_data):
@@ -25,7 +25,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = (
             'id',
-            'category_name',
+            'category',
             'name',
             'image'
         )
