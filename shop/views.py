@@ -12,6 +12,10 @@ def homepage(request):
     return render(request, 'shop/home.html')
 
 
+def test(request):
+    return render(request, 'shop/test.html')
+
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
