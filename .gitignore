@@ -10,7 +10,7 @@ static/
 *.so
 
 # Distribution / packaging
-node_modules
+/node_modules/*
 .idea/
 .Python
 venv/
