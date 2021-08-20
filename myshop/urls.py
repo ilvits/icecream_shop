@@ -10,7 +10,7 @@ urlpatterns = [
                   path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'favicon/favicon.png')),
                   path('admin/', admin.site.urls),
                   path('', views.homepage, name='homepage'),
-                  path('test/', views.test, name='test'),
+                  path('vue_tests/', include('vue_tests.urls')),
                   path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
                   path('accounts/', include('allauth.urls')),
                   path('cart/', include(('cart.urls', 'cart'), namespace='cart')),

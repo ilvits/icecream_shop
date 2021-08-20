@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
+from django.utils.translation import gettext as _
 
 from .forms import UserCreateForm, UserForm, ProfileForm
 from orders.models import Order
@@ -63,7 +64,7 @@ def login_request(request):
 
 def logout_request(request):
     logout(request)
-    messages.info(request, "You have successfully logged out.")
+    messages.info(request, _("You have successfully logged out."))
     return redirect("homepage")
 
 

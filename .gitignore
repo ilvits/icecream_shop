@@ -4,7 +4,7 @@ __pycache__/
 /__pycache__/*
 *.py[cod]
 static/
-!/shop/static/
+!/vue_tests/static/
 .DS_Store
 
 # C extensions

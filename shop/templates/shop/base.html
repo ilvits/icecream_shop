@@ -28,9 +28,11 @@
             src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"
     ></script>
     <script
-            src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.prod.js"
+            src="https://unpkg.com/vue@next"
     ></script>
-
+    <script
+            src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.3"
+    ></script>
 </head>
 <body class="font-sans font-extralight text-gray-700 ">
 {#{% if user.is_authenticated %}#}
@@ -123,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-                    <li</li>
+                    <li></li>
                 {% endfor %}
             </ul>
         {% endif %}

@@ -19,7 +19,9 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-ALLOWED_HOSTS = ['icecream.ilvits.com', '45.156.25.29', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
+# 'icecream.ilvits.com', '45.156.25.29', 'localhost', '127.0.0.1'
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'accounts',
+    'vue_tests',
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     # Other apps
     'django_cleanup.apps.CleanupConfig',
+    'rest_framework',
     'widget_tweaks',
     'silk',
     'tailwind',
@@ -162,6 +166,7 @@ DATABASES = {
     }
 }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -187,9 +192,11 @@ LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Europe/Moscow'
 
-USE_I18N = False
+USE_THOUSAND_SEPARATOR = True
 
-USE_L10N = False
+USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
