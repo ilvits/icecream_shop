@@ -12,7 +12,7 @@ module.exports = {
      * Set mode to "jit" if you want to generate your styles on-demand as you author your templates;
      * Set mode to "aot" if you want to generate the stylesheet in advance and purge later (aka legacy mode).
      */
-    mode: "jit",
+    mode: "aot",
 
     purge: [
         /**
@@ -26,10 +26,7 @@ module.exports = {
          * Main templates directory of the project (BASE_DIR/templates).
          * Adjust the following line to match your project structure.
          */
-        '../../templates/**/**/*.html',
         '../../templates/**/*.html',
-        '../../templates/*.html',
-
         
         /* 
          * Templates in other django apps (BASE_DIR/<any_app_name>/templates).

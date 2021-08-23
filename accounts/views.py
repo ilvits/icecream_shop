@@ -33,14 +33,14 @@ def user_order_detail(request, order_id):
                 category_set.append(category)
 
     return render(request,
-                  'order/user_order_detail.html',
+                  'accounts/order/user_order_detail.html',
                   {'order': order, 'category_set': category_set})
 
 
 class SignUpView(generic.CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy('accounts:login')
-    template_name = 'registration/signup.html'
+    template_name = 'accounts/registration/signup.html'
 
 
 def login_request(request):
@@ -59,7 +59,7 @@ def login_request(request):
         else:
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
-    return render(request=request, template_name="registration/login.html", context={"form": form})
+    return render(request=request, template_name="accounts/registration/login.html", context={"form": form})
 
 
 def logout_request(request):
@@ -77,7 +77,7 @@ def user_profile(request):
     else:
         orders = Order.objects.filter(owner=user.id)
     return render(request,
-                  'user_profile.html',
+                  'accounts/user_profile.html',
                   {'orders': orders})
 
 
@@ -90,7 +90,7 @@ def password_reset_request(request):
             if associated_users.exists():
                 for user in associated_users:
                     subject = "Password Reset Requested"
-                    email_template_name = "registration/password_reset_email.txt"
+                    email_template_name = "accounts/registration/password_reset_email.txt"
                     c = {
                         "email": user.email,
                         'domain': 'ilvits.com',
@@ -107,7 +107,7 @@ def password_reset_request(request):
                         return HttpResponse('Invalid header found.')
                     return redirect("done/")
     password_reset_form = PasswordResetForm()
-    return render(request=request, template_name="registration/password_reset_form.html",
+    return render(request=request, template_name="accounts/registration/password_reset_form.html",
                   context={"password_reset_form": password_reset_form})
 
 
@@ -127,7 +127,7 @@ def edit_profile(request):
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'edit_profile.html', {
+    return render(request, 'accounts/edit_profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })
