@@ -8,14 +8,15 @@ from .models import Category, Product
 from cart.forms import CartAddProductForm
 
 
+@login_required
 def homepage(request):
     return render(request, 'shop/home.html')
 
 
-def test(request):
-    return render(request, 'shop/test.html')
+# def test(request):
+#     return render(request, 'shop/test.html')
 
-
+@login_required
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
