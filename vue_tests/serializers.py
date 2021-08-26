@@ -1,7 +1,6 @@
-from django.contrib.auth.decorators import login_required
 from rest_framework import serializers
 
-from shop.models import Category, Product
+from shop.models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
