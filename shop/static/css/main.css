@@ -21,3 +21,13 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 100%;
     height: 0;
     padding-bottom: 100%; }
+
+/*
+The CSS rule below is necessary to force the menu to display at desktop size. Without it, it would be hidden due to this Alpine directive:
+x-data="{menuIsOpen : false}"
+*/
+@media screen and (min-width: 1024px) {
+    .flex-important{
+        display: block !important;
+    }
+}
