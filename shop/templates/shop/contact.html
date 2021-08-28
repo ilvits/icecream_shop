@@ -10,27 +10,28 @@
                     <form class="" action="." method="POST">
                         {% csrf_token %}
                         <div class="relative" x-data="{ value: '{{ user.username }}' }">
-                            <input type="text" name="name" x-model="value" id="name"
+                            <input type="text" name="name" x-model="value" id="name" required
                                    class="
-                                   h-12 px-3 w-full border border-gray-200 rounded
+                                   h-12 px-3 w-full border border-gray-300 rounded
                                    focus:outline-white focus:border-0"
                                    >
                             <label for="name" :class="{ '-translate-y-8 text-xs': value, '-translate-y-1/2 text-md text-gray-500': !value }"
                                    class="focused-sibling:-translate-y-8 focused-sibling:text-xs bg-white absolute top-1/2 px-1 left-2 transform transition-transform">Ваше Имя</label>
                         </div>
                         <div class="relative my-8" x-data="{ value: '{{ user.email }}' }">
-                            <input type="email" name="email" x-model="value" id="email"
+                            <input type="email" name="email" x-model="value" id="email" required
                                    class="
-                                   h-12 px-3 w-full border border-gray-200 rounded
-                                   focus:outline-none focus:border-blue-600"
+                                   h-12 px-3 w-full border border-gray-300 rounded
+                                   focus:outline-none focus:border-0"
                                    >
-                            <label for="email" :class="{ '-translate-y-8 text-xs': value, '-translate-y-1/2 text-md text-gray-500': !value }"
-                                   class="focused-sibling:-translate-y-8 focused-sibling:text-xs bg-white absolute top-1/2 px-1 left-2 transform transition-transform">Ваш Email</label>
+                            <label for="email" :class="{ '-translate-y-8 text-xs rounded-full': value, '-translate-y-1/2 text-md text-gray-500 rounded-full': !value }"
+                                   class="focused-sibling:-translate-y-8 focused-sibling:text-xs bg-white rounded-full absolute top-1/2 px-1 left-2 transform transition-transform">Ваш Email</label>
                         </div>
                         <div class="relative my-4" x-data="{ value: '' }">
-                            <textarea type="text" name="message" x-model="value" id="message"
+                            <textarea type="text" name="message" x-model="value" id="message" required
                                    class="
-                                   h-36 py-1 px-3 w-full border border-gray-200 rounded focus:outline-none focus:border-blue-600 resize-none"
+                                   h-36 py-4 px-3 w-full border border-gray-300 rounded
+                                   focus:outline-none focus:border-0"
                                    ></textarea>
                             <label for="message" :class="{ '-translate-y-7 text-xs': value, '-translate-y-1/2 text-md text-gray-500': !value }"
                                    class="focused-sibling:-translate-y-7 focused-sibling:text-xs bg-white absolute top-5 px-1 left-2 transform transition-transform">Ваше сообщение</label>
