@@ -3,10 +3,10 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    <div class="min-h-screen flex flex-row">
+    <div class="flex flex-row">
         {{ block.super }}
-        <div class="flex flex-grow">
-            <form class="md:p-4 bg-white md:w-auto m-4"
+        <div class="flex mx-4 md:mx-8">
+            <form class="flex-wrap mt-2 md:mt-4"
                   method="post"
                   enctype="multipart/form-data"
             >
@@ -14,10 +14,10 @@
                 {% csrf_token %}
                 {% for field in user_form %}
                     <div class="mb-5 mt-4 w-sm">
-                        <label for="{{ field.id_for_label }}" class="block mb-2 font-normal text-gray-600">
+                        <label for="{{ field.id_for_label }}" class="block mb-2 font-light text-gray-600">
                             {{ field.label }}
                         </label>
-                        {% render_field field|add_class:"border border-gray-200 p-3 w-full rounded mb-" placeholder=field.label %}
+                        {% render_field field|add_class:"border border-gray-200 p-3 rounded mb- text-black" placeholder=field.label %}
                         {% for error in field.errors %}
                             <span class="text-sm text-red-400 mt-8">{{ error }}</span>
                         {% endfor %}
@@ -30,16 +30,17 @@
 
                 {% for field in profile_form %}
                     <div class="mb-5 mt-4">
-                        <label for="{{ field.id_for_label }}" class="block mb-2 font-normal text-gray-600">
+                        <label for="{{ field.id_for_label }}" class="block mb-2 font-light text-gray-600">
                             {{ field.label }}
+                            <hr>
                         </label>
-                        {% render_field field|add_class:"border border-gray-200 p-3 w-full rounded mb-" placeholder=field.label %}
+                        {% render_field field|add_class:"block border border-gray-200 p-3 rounded mb-" placeholder=field.label %}
                         {% for error in field.errors %}
                             <span class="text-sm text-red-400 mt-8">{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% endfor %}
-                <button class="block w-full bg-white text-gray-800 font-bold p-4 rounded-lg shadow-md"
+                <button class="block bg-white text-gray-800 border-t border-gray-100 font-bold p-4 rounded-lg shadow-md"
                         type="submit">Сохранить
                 </button>
             </form>
