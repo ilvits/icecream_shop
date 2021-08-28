@@ -13,11 +13,14 @@
                 <div class="text-3xl">Настройка аккаунта</div>
                 {% csrf_token %}
                 {% for field in user_form %}
-                    <div class="mb-5 mt-4 w-sm">
-                        <label for="{{ field.id_for_label }}" class="block mb-2 font-light text-gray-600">
+                    <div class="mb-5 mt-4 w-sm relative" x-data="{ value: '{{ field.value }}' }">
+
+                        {% render_field field|add_class:"h-12 px-3 w-full border border-gray-300 rounded focus:outline-white focus:border-0 text-gray-800"  x-model="value" %}
+                        <label for="{{ field.id_for_label }}" :class="{ '-translate-y-8 text-xs': value, '-translate-y-1/2 text-md text-gray-500': !value }"
+                               class="focused-sibling:-translate-y-8 focused-sibling:text-xs bg-white absolute top-1/2 px-1 left-2 transform transition-transform">
                             {{ field.label }}
                         </label>
-                        {% render_field field|add_class:"border border-gray-200 p-3 rounded mb- text-black" placeholder=field.label %}
+
                         {% for error in field.errors %}
                             <span class="text-sm text-red-400 mt-8">{{ error }}</span>
                         {% endfor %}
@@ -34,7 +37,9 @@
                             {{ field.label }}
                             <hr>
                         </label>
-                        {% render_field field|add_class:"block border border-gray-200 p-3 rounded mb-" placeholder=field.label %}
+                        <img class="w-36" src="/media/{{ field.value }}">
+                        {% render_field field|add_class:"flex border border-gray-200 p-3 rounded mb-" %}
+
                         {% for error in field.errors %}
                             <span class="text-sm text-red-400 mt-8">{{ error }}</span>
                         {% endfor %}
@@ -43,6 +48,8 @@
                 <button class="block bg-white text-gray-800 border-t border-gray-100 font-bold p-4 rounded-lg shadow-md"
                         type="submit">Сохранить
                 </button>
+
+            
             </form>
             {% if form.errors %}
                 <div class="text-sm text-red-400 text-center mb-6">
