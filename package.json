@@ -2,6 +2,7 @@
   "dependencies": {
     "debug": "^4.3.2",
     "lodash": "^4.17.21",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "tailwindcss-aspect-ratio": "^3.0.0"
   }
 }
