@@ -21,7 +21,7 @@ class ProductView(ListView):
     model = Product
     template_name = 'shop/product/list.html'
     context_object_name = 'products'
-    paginate_by = 2
+    paginate_by = 12
 
     def get_queryset(self):
         if self.kwargs:
@@ -41,6 +41,7 @@ class ProductView(ListView):
         # Add in the product
         context['categories'] = categories
         context['category'] = category
+
         return context
 
 
