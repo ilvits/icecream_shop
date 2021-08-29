@@ -41,7 +41,6 @@
             </h2>
         </div>
         <!-- Товары -->
-
         <section class="container p-3 mx-auto">
             <div class="grid gap-y-8 gap-4 md:gap-6 md:gap-y-8 m-4 mb-16 md:m-16 grid-cols-2 sm:grid-cols-3 md::grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
                 {% for product in products %}
@@ -105,6 +104,7 @@
             </div>
         </section>
 
+
         <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
@@ -122,6 +122,7 @@
         {% endif %}
     </span>
         </div>
+
         {#        <section class="container px-6 py-4 mx-auto">#}
         {#            <div class="grid gap-4 mb-8 md:grid-cols-2 lg:grid-cols-4">#}
         {#                {% for product in products %}#}
