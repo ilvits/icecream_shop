@@ -8,7 +8,7 @@
         {% with total_items=cart|length %}
             {% if cart|length > 0 %}
                 <a href="{% url "cart:cart_detail" %}"
-                   class="z-50 fixed bottom-6 right-6 rounded-2xl shadow-md px-2 py-1 bg-red-400 border-2 text-lg text-white font-light backdrop-filter backdrop-blur-md bg-opacity-50">
+                   class="z-50 fixed bottom-6 right-6 rounded-2xl shadow-md px-2 py-1 bg-red-400 border-2 text-lg text-white font-light backdrop-filter backdrop-blur-md bg-opacity-75">
 
                     <div class="flex text-xs font-normal">Итого:</div>
                     <div class="flex">{{ cart.get_total_price }} ₽</div>
