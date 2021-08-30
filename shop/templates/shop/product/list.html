@@ -21,6 +21,7 @@
                     <a class="text-lg" {% if not category %} class="text-red-400 bg-yellow-50"{% endif %}
                        href="{% url "shop:product_list" %}">
                         <img class="w-8 md:w-10" src="/media/all_cat.png" alt="">
+                        <div class="text-xs">Все</div>
                     </a>
                 </li>
                 {% for c in categories %}
