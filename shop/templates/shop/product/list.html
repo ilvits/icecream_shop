@@ -29,6 +29,7 @@
                            href="{{ c.get_absolute_url }}">
                             {% if c.icon %}
                                 <img class="w-8 md:w-10" src="{{ c.icon.url }}" alt="Категория">
+                                <div class="text-xs">{{ c.name }}</div>
                             {% else %}
                                 {{ c.name }}
                             {% endif %}
