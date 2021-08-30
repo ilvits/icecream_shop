@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 {% for c in categories %}
-                    <li class="mx-4 items-center text-center">
+                    <li class="mx-4 items-center text-center justify-center">
                         <a {% if category.slug == c.slug %}class="text-red-400 font-normal"{% endif %}
                            href="{{ c.get_absolute_url }}">
                             {% if c.icon %}
