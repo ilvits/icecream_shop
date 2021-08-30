@@ -16,7 +16,7 @@
     </div>
     <div class="mt-6">
         <div class="" id="categories">
-            <ul class="flex justify-center">
+            <ul class="flex justify-center mx-2">
                 <li class="mx-0 sm:mx-6">
                     <a class="text-lg" {% if not category %} class="text-red-400 font-medium"{% endif %}
                        href="{% url "shop:product_list" %}">
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 {% for c in categories %}
-                    <li class="mx-2 sm:mx-4 items-center text-center justify-center">
+                    <li class="mx-0 sm:mx-4 items-center text-center justify-center">
                         <a {% if category.slug == c.slug %}class="text-red-400 font-medium"{% endif %}
                            href="{{ c.get_absolute_url }}">
                             {% if c.icon %}
