@@ -71,6 +71,7 @@
                         </div>
                         <form class="flex items-center mx-2" action="{% url "cart:cart_add" product.id %}"
                               method="post">
+                            <input type="hidden" name="next" value="{% url 'category.slug' %}">
                             {{ cart_product_form }}
                             {% csrf_token %}
                             <div class="flex flex-grow justify-left">
@@ -111,7 +112,7 @@
                                 </button>
                             {% endif %}
                             {% endfor %}
-                                <button class="h-8 w-8 px-2 rounded-full border hover:bg-red-400 hover:text-white 
+                                <button class="h-8 w-8 px-2 rounded-full border hover:bg-red-400 hover:text-white
                                            {% for item in cart %}
                                     {% if product == item.product %}
                                     hidden
