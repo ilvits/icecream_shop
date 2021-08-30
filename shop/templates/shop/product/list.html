@@ -83,12 +83,7 @@
                                                   d="M18 12H6"></path>
                                         </svg>
                                     </button>
-                                    <input class="text-sm w-12 h-6 border-0 text-center appearance-none
-                                                {% for item in cart %}
-                                                    {% if product == item.product %}
-                                                    bg-red-400 text-white rounded
-                                                    {% endif %}
-                                                {% endfor %}"
+                                    <input class="text-sm w-12 h-6 border-0 text-center appearance-none"
                                            name="quantity"
                                            type="number"
                                            min="25"
@@ -105,6 +100,21 @@
                                 </div>
                             </div>
                             <div class="flex flex-none">
+
+                                {% for item in cart %}
+                                    {% if product == item.product %}
+                                        <button type="submit"
+                                                class="p-2 rounded-full border flex text-white text-xs items-center bg-red-400">
+                                            {{ item.quantity }} шт.
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none"
+                                                 viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                            </svg>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}"
+
                                 <button class="p-2 rounded-full border" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor">
@@ -129,8 +139,10 @@
 
                 {% if page_obj.has_next %}
                     <a class="infinite-more-link text-center" href="?page={{ page_obj.next_page_number }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 13l-7 7-7-7m14-8l-7 7-7-7"/>
                         </svg>
                     </a>
                 {% endif %}
