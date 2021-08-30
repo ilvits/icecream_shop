@@ -75,7 +75,7 @@
                             {% csrf_token %}
                             <div class="flex flex-grow justify-left">
                                 <div class="flex rounded-full p-1 border items-center">
-                                    <button class="h-4 w-4 lg:h-5 lg:w-5 rounded-full hover:bg-blue-200" type="button"
+                                    <button class="h-6 w-6 rounded-full hover:bg-blue-200" type="button"
                                             onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke="currentColor">
@@ -83,13 +83,13 @@
                                                   d="M18 12H6"></path>
                                         </svg>
                                     </button>
-                                    <input class="text-sm -mx-2 w-12 h-4 lg:h-5 border-0 text-center appearance-none rounded"
+                                    <input class="text-sm -mx-2 w-12 h-5 border-0 text-center appearance-none rounded"
                                            name="quantity"
                                            type="number"
                                            min="25"
                                            value="25"
                                            step="25" readonly>
-                                    <button class="h-4 w-4 lg:h-5 lg:w-5 rounded-full hover:bg-blue-200" type="button"
+                                    <button class="h-6 w-6 rounded-full hover:bg-blue-200" type="button"
                                             onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke="currentColor">
@@ -101,7 +101,7 @@
                             </div>
                             <div class="flex flex-none items-center">{% for item in cart %}{% if product == item.product %}
                                 <button type="submit"
-                                        class="h-4 lg:h-7 px-2 rounded-full border flex text-white text-xs items-center bg-red-400">
+                                        class="h-7 px-2 rounded-full border flex text-white text-xs items-center bg-red-400">
                                     {{ item.quantity }} шт.
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor">
@@ -111,7 +111,7 @@
                                 </button>
                             {% endif %}
                             {% endfor %}
-                                <button class="h-5 w-5 lg:h-7 lg:w-7 rounded-full border
+                                <button class="h-7 w-7 rounded-full border
                                            {% for item in cart %}
                                     {% if product == item.product %}
                                     hidden
