@@ -5,56 +5,66 @@
 {% endblock %}
 {% block content %}
     {% with total_items=cart|length %}
-    {% if cart|length > 0 %}
-    <h1 class="font-bold uppercase text-2xl mb-10 text-center">Ваша корзина</h1>
+        {% if cart|length > 0 %}
+            <h1 class="font-bold uppercase text-2xl mb-10 text-center">Ваша корзина</h1>
 
-    <div class="w-full md:w-3/5 mx-auto px-4">
-        {% for item in cart %}
-            {% with product=item.product %}
-            <!-- Карточка товара -->
-			<div class='relative my-2 shadow-lg flex bg-white rounded border-t border-gray-50 z-0'>
-				<div class='flex-no-shrink p-2'>
-					<img alt='{{ product.name }}' class='w-14 block mx-auto' 
-                    src='
+            <div class="w-full md:w-3/5 mx-auto px-4">
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <!-- Карточка товара -->
+                        <div class='relative my-2 shadow-lg flex bg-white rounded border-t border-gray-50 z-0'>
+                            <div class='flex-no-shrink p-2'>
+                                <img alt='{{ product.name }}' class='w-14 block mx-auto'
+                                     src='
                         {% if product.image %}
                             {{ product.image.url }}
                         {% else %}
                             {% static "img/no_image.png" %}
                         {% endif %}'
-                    >
-				</div>
-				<div class='flex-1 card-block relative'>
-                        <a class='w-6 h-6 bg-white right-2 top-2 flex items-center justify-center text-center no-underline rounded-full text-black shadow hover:bg-red-400 hover:text-white absolute pin-t pin-r' 
-                        href="{% url "cart:cart_remove" product.id%}">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                        </a>
-                    <div class="px-0">
-                            <h4 class='font-extralight text-xl md:text-2xl mt-1'>{{ product.name }}</h4>
-                            <p class='leading-normal text-gray-400 text-sm'>{{ product.category }}</p>
-                            <p class="text-lg text-gray-600 block -mt-2 px-2 pb-2 font-extralight text-right">
-                            <span class="text-black font-normal">{{ item.quantity }} шт.</span> | {{ item.total_price }}₽</p>
+                                >
+                            </div>
+                            <div class='flex-1 card-block relative'>
+                                <a class='w-6 h-6 bg-white right-2 top-2 flex items-center justify-center text-center no-underline rounded-full text-black shadow hover:bg-red-400 hover:text-white absolute pin-t pin-r'
+                                   href="{% url "cart:cart_remove" product.id %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                                </a>
+                                <div class="px-0">
+                                    <h4 class='font-extralight text-xl md:text-2xl mt-1'>{{ product.name }}</h4>
+                                    <p class='leading-normal text-gray-400 text-sm'>{{ product.category }}</p>
+                                    <p class="text-lg text-gray-600 block -mt-2 px-2 pb-2 font-extralight text-right">
+                                        <span class="text-black font-normal">{{ item.quantity }} шт.</span>
+                                        | {{ item.total_price }}₽</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endwith %}
+                {% endfor %}
+                <span class="w-full block text-right text-xl text-black mt-4">Общая сумма: <span
+                        class="font-normal">{{ cart.get_total_price }}₽</span></span>
+                <div class="flex justify-between w-full mt-4">
+                    <a href="{% url "shop:product_list" %}" class="button light">
+                        <button class="px-4 py-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+                            Продолжить покупки
+                        </button>
+                    </a>
+                    <a href="{% url "orders:order_create" %}" class="button">
+                        <button class="px-4 py-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+                            Оформить
+                        </button>
+                    </a>
                 </div>
-            {% endwith %}
-        {% endfor %}
-            <span class="w-full block text-right text-xl text-black mt-4">Общая сумма: <span class="font-normal">{{ cart.get_total_price }}₽</span></span>
-    <div class="flex justify-between w-full mt-4">
-        <button class="px-4 py-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
-            <a href="{% url "shop:product_list" %}" class="button light">Продолжить покупки</a>
-        </button>
-        <button class="px-4 py-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
-            <a href="{% url "orders:order_create" %}" class="button">Оформить</a>
-        </button>
-    </div>
-		</div>
+            </div>
         {% else %}
-        <div class="m-8 text-center text-2xl">В вашей корзине ничего нет</div>
-        <button class="flex justify-center px-4 py-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
-            <a href="{% url "shop:product_list" %}" class="button light">Каталог</a>
-        </button>
-    {% endif %}
+            <div class="m-8 text-center text-2xl">В вашей корзине ничего нет</div>
+            <a href="{% url "shop:product_list" %}" class="button light">
+                <button class="flex justify-center px-4 py-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+                    Каталог
+                </button>
+            </a>
+        {% endif %}
     {% endwith %}
 {% endblock %}
