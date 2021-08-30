@@ -18,7 +18,7 @@
         <div class="" id="categories">
             <ul class="flex justify-center">
                 <li class="mx-6">
-                    <a class="text-lg" {% if not category %} class="text-red-400 bg-yellow-50"{% endif %}
+                    <a class="text-lg" {% if not category %} class="text-red-400 font-medium"{% endif %}
                        href="{% url "shop:product_list" %}">
                         <img class="w-8 md:w-10" src="/media/all_cat.png" alt="">
                         <div class="text-xs">Все</div>
@@ -26,7 +26,7 @@
                 </li>
                 {% for c in categories %}
                     <li class="mx-4 items-center text-center justify-center">
-                        <a {% if category.slug == c.slug %}class="text-red-400 font-normal"{% endif %}
+                        <a {% if category.slug == c.slug %}class="text-red-400 font-medium"{% endif %}
                            href="{{ c.get_absolute_url }}">
                             {% if c.icon %}
                                 <img class="w-8 md:w-10" src="{{ c.icon.url }}" alt="Категория">
