@@ -5,6 +5,16 @@
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
 
+const plugin = require("tailwindcss/plugin");
+
+const focusedSiblingPlugin = plugin(function ({ addVariant, e }) {
+    addVariant("focused-sibling", ({ container }) => {
+        container.walkRules((rule) => {
+            rule.selector = `:focus + .focused-sibling\\:${rule.selector.slice(1)}`;
+        });
+    });
+});
+
 module.exports = {
     /**
      * Stylesheet generation mode.
@@ -12,7 +22,7 @@ module.exports = {
      * Set mode to "jit" if you want to generate your styles on-demand as you author your templates;
      * Set mode to "aot" if you want to generate the stylesheet in advance and purge later (aka legacy mode).
      */
-    mode: "aot",
+    mode: "jit",
 
     purge: [
         /**
@@ -54,7 +64,9 @@ module.exports = {
         extend: {},
     },
     variants: {
-        extend: {},
+        extend: {
+            backgroundColor: ["focused-sibling"],
+        },
     },
     plugins: [
         /**
@@ -66,5 +78,6 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
+        focusedSiblingPlugin,
     ],
-}
+};

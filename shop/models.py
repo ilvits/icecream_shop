@@ -17,21 +17,21 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_list_by_category',
-                        args=[self.slug])
+                       args=[self.slug])
 
 
 class Product(models.Model):
-    category    = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
-    name        = models.CharField(max_length=255)
-    slug        = models.CharField(max_length=255)
-    description = models.TextField(blank = True)
-    image       = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
-    image_p     = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
-    price       = models.DecimalField(max_digits=10, decimal_places=0)
-    stock       = models.PositiveIntegerField()
-    available   = models.BooleanField(default=True)
-    created     = models.DateTimeField(auto_now_add=True)
-    updated     = models.DateTimeField(auto_now=True)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
+    image_p = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
+    stock = models.PositiveIntegerField()
+    available = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ('category', 'name',)

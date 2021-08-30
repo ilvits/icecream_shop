@@ -6,7 +6,7 @@ __pycache__/
 static/
 !/vue_tests/static/
 .DS_Store
-
+products/
 # C extensions
 *.so
 

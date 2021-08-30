@@ -1,32 +1,50 @@
 {% extends "shop/base.html" %}
 {% block title %}
-    {% if category %}{{ category.title }}{% else %}Наклейки{% endif %}
+Контакт
 {% endblock %}
 {% block content %}
-    <div class="py-20 px-2">
-        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg border-t border-gray-50 overflow-hidden md:max-w-lg">
+    <div class="py-8 md:py-16">
+        <div class="p-2 sm:p-8 mx-4 sm:mx-auto bg-white rounded-lg shadow-lg border-t border-gray-100 overflow-hidden md:max-w-lg">
             <div class="md:flex">
                 <div class="w-full px-4 py-6 ">
                     <form class="" action="." method="POST">
                         {% csrf_token %}
-                    <div class="mb-1"><span class="text-sm">Ваше имя</span>
-                        <input type="text" name="name"
-                               class="h-12 px-3 w-full border border-gray-200 rounded focus:outline-none focus:border-blue-600"
-                               value="{{ user.username }}"></div>
-                    <div class="mb-1"><span class="text-sm">Ваш Email</span>
-                        <input type="email" name="email"
-                               class="h-12 px-3 w-full border border-gray-200 rounded focus:outline-none focus:border-blue-600"
-                               value="{{ user.email }}"></div>
-                    <div class="mb-1"><span class="text-sm">Ваше сообщение</span>
-                        <textarea type="text" name="message"
-                                  class="h-24 py-1 px-3 w-full border border-gray-200 rounded focus:outline-none focus:border-blue-600 resize-none"></textarea>
-                    </div>
-                    <div class="mt-3 text-right">
-                        <button type="submit" class="ml-2 h-10 w-32 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
-                            Отправить
-                        </button>
-                    </div>
+                        <div class="relative" x-data="{ value: '{{ user.username }}' }">
+                            <input type="text" name="name" x-model="value" id="name" required
+                                   class="
+                                   h-12 px-3 w-full border border-gray-300 rounded
+                                   focus:outline-white focus:border-0"
+                                   >
+                            <label for="name" :class="{ '-translate-y-8 text-xs': value, '-translate-y-1/2 text-md text-gray-500': !value }"
+                                   class="focused-sibling:-translate-y-8 focused-sibling:text-xs bg-white absolute top-1/2 px-1 left-2 transform transition-transform">Ваше Имя</label>
+                        </div>
+                        <div class="relative my-8" x-data="{ value: '{{ user.email }}' }">
+                            <input type="email" name="email" x-model="value" id="email" required
+                                   class="
+                                   h-12 px-3 w-full border border-gray-300 rounded
+                                   focus:outline-none focus:border-0"
+                                   >
+                            <label for="email" :class="{ '-translate-y-8 text-xs rounded-full': value, '-translate-y-1/2 text-md text-gray-500 rounded-full': !value }"
+                                   class="focused-sibling:-translate-y-8 focused-sibling:text-xs bg-white rounded-full absolute top-1/2 px-1 left-2 transform transition-transform">Ваш Email</label>
+                        </div>
+                        <div class="relative my-4" x-data="{ value: '' }">
+                            <textarea type="text" name="message" x-model="value" id="message" required
+                                   class="
+                                   h-36 py-4 px-3 w-full border border-gray-300 rounded
+                                   focus:outline-none focus:border-0"
+                                   ></textarea>
+                            <label for="message" :class="{ '-translate-y-7 text-xs': value, '-translate-y-1/2 text-md text-gray-500': !value }"
+                                   class="focused-sibling:-translate-y-7 focused-sibling:text-xs bg-white absolute top-5 px-1 left-2 transform transition-transform">Ваше сообщение</label>
+                        </div>
+                        <div class="mt-3 text-right">
+                            <button type="submit"
+                                    class="ml-2 h-10 w-32 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+                                Отправить
+                            </button>
+                        </div>
                     </form>
+
+
                 </div>
             </div>
         </div>
