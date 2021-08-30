@@ -29,7 +29,7 @@
                         <a {% if category.slug == c.slug %}class="text-red-400 font-medium"{% endif %}
                            href="{{ c.get_absolute_url }}">
                             {% if c.icon %}
-                                <img class="pb-2 w-8 md:w-10 mx-auto pt-2" src="{{ c.icon.url }}" alt="Категория">
+                                <img class="pb-2 w-8 md:w-10 mx-auto" src="{{ c.icon.url }}" alt="Категория">
                                 <div class="text-xs">{{ c.name }}</div>
                             {% else %}
                                 {{ c.name }}
