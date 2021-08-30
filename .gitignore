@@ -9,7 +9,7 @@ static/
 products/
 # C extensions
 *.so
-
+!/shop/static
 # Distribution / packaging
 /node_modules/*
 .idea/
