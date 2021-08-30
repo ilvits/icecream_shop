@@ -42,17 +42,17 @@
         {% endfor %}
             <span class="w-full block text-right text-xl text-black mt-4">Общая сумма: <span class="font-normal">{{ cart.get_total_price }}₽</span></span>
     <div class="flex justify-between w-full pt-2">
-        <button class="ml-2 h-10 w-48 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+        <button class="px-4 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
             <a href="{% url "shop:product_list" %}" class="button light">Продолжить покупки</a>
         </button>
-        <button class="ml-2 h-10 w-48 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+        <button class="px-4 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
             <a href="{% url "orders:order_create" %}" class="button">Оформить</a>
         </button>
     </div>
 		</div>
         {% else %}
         <div class="m-8 text-center text-2xl">В вашей корзине ничего нет</div>
-        <button class="ml-2 h-10 w-48 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
+        <button class="px-2 bg-white border border-gray-50 shadow rounded text-black hover:bg-gray-50">
             <a href="{% url "shop:product_list" %}" class="button light">Каталог</a>
         </button>
     {% endif %}
