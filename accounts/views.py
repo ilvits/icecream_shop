@@ -105,7 +105,7 @@ def password_reset_request(request):
                         send_mail(subject, email, 'admin@ilvits.com', [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
-                    return redirect("accounts/password_reset/done/")
+                    return redirect("done/")
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="accounts/registration/password_reset_form.html",
                   context={"password_reset_form": password_reset_form})
