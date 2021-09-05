@@ -90,7 +90,7 @@ def password_reset_request(request):
             if associated_users.exists():
                 for user in associated_users:
                     subject = "Password Reset Requested"
-                    email_template_name = "accounts/registration/password_reset_email.txt"
+                    email_template_name = "registration/password_reset_email.txt"
                     c = {
                         "email": user.email,
                         'domain': 'ilvits.com',
@@ -105,9 +105,9 @@ def password_reset_request(request):
                         send_mail(subject, email, 'admin@ilvits.com', [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
-                    return redirect("done/")
+                    return redirect("/accounts/password_reset/done/")
     password_reset_form = PasswordResetForm()
-    return render(request=request, template_name="accounts/registration/password_reset_form.html",
+    return render(request=request, template_name="registration/password_reset_form.html",
                   context={"password_reset_form": password_reset_form})
 
 
