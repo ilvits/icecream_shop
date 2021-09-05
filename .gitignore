@@ -10,6 +10,7 @@ products/
 # C extensions
 *.so
 !/shop/static/js
+!/theme/static
 # Distribution / packaging
 /node_modules/*
 .idea/
