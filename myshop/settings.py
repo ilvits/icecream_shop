@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'orders',
     'accounts',
     'vue_tests',
+    'theme',
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,7 +61,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'silk',
     'tailwind',
-    'theme',
+
 
     'allauth',
     'allauth.account',
