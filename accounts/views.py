@@ -17,8 +17,8 @@ from django.utils.encoding import force_bytes
 from django.utils.translation import gettext as _
 
 from .forms import UserCreateForm, UserForm, ProfileForm
-from orders.models import Order
-from shop.views import Category
+from icecream_shop.orders.models import Order
+from icecream_shop.shop.views import Category
 from django.db import transaction
 
 
