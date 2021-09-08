@@ -5,7 +5,7 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
-    icon = models.ImageField(upload_to='media/images/category', blank=True)
+    icon = models.ImageField(upload_to='images/category', blank=True)
 
     class Meta:
         ordering = ('name',)
@@ -25,8 +25,8 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='media/images/products/%Y/%m/%d', blank=True)
-    image_p = models.ImageField(upload_to='media/images/products/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
+    image_p = models.ImageField(upload_to='images/products/%Y/%m/%d', blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     stock = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
