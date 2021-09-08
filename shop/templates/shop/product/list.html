@@ -22,7 +22,7 @@
                 <li class="mx-0 sm:mx-6">
                     <a class="text-lg" {% if not category %} class="text-red-400 font-medium"{% endif %}
                        href="{% url "shop:product_list" %}">
-                        <img class="w-8 pb-2 md:w-10 mx-auto" src="/media/all_cat.png" alt="">
+                        <img class="w-8 pb-2 md:w-10 mx-auto" src="/media/images/all_cat.png" alt="">
                         <div class="text-xs text-center">Все</div>
                     </a>
                 </li>
@@ -65,7 +65,7 @@
                                         loading="lazy"
                                         src="
                                         {% if product.image %}{{ product.image.url }}
-                                        {% else %}{% static "images/no_image.png" %}
+                                        {% else %}{% static "media/images/no_image.png" %}
                                         {% endif %}"
                                 >
                             </div>
