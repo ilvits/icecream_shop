@@ -10,7 +10,7 @@
         </div>
     {% else %}
         <div class="w-16 my-8 mt-8 mx-auto">
-            <img class="w-16 h-16" src="/images/logo.svg">
+            <img class="w-16 h-16" src="/media/images/logo.svg">
         </div>
         <div class="w-5/6 bg-white rounded-lg shadow-lg border-t border-gray-50 md:max-w-sm mx-auto">
 
@@ -19,10 +19,10 @@
             </div>
         <div class="flex justify-center align-items-center">
             <div class="flex align-items-center">
-                <a href="{% provider_login_url 'google' %}"><img class="w-16 px-2" src="images/btn_google_light_normal_ios.svg"></a>
+                <a href="{% provider_login_url 'google' %}"><img class="w-16 px-2" src="/media/images/btn_google_light_normal_ios.svg"></a>
             </div>
             <div class="flex align-items-center">
-                <a href="{% provider_login_url 'vk' %}"><img class="w-14 pt-1 px-2" src="images/VK_Compact_Logo.svg"></a>
+                <a href="{% provider_login_url 'vk' %}"><img class="w-14 pt-1 px-2" src="/media/images/VK_Compact_Logo.svg"></a>
             </div>
         </div>
             <form class="bg-gray-50 px-10 py-10" method="post" action="{% url 'accounts:login' %}">
