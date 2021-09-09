@@ -83,3 +83,4 @@ def contact_form(request):
 
     else:
         return render(request, 'shop/contact.html')
+

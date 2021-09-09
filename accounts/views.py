@@ -17,6 +17,7 @@ from django.utils.encoding import force_bytes
 from django.utils.translation import gettext as _
 
 from .forms import UserCreateForm, UserForm, ProfileForm
+from .tasks import send_reset_form
 from orders.models import Order
 from shop.views import Category
 from django.db import transaction
@@ -52,19 +53,19 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
+                messages.info(request, f"Вы вошли как {username}.")
                 return redirect("homepage")
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.error(request, "Неправильное имя пользователя или пароль.")
         else:
-            messages.error(request, "Invalid username or password.")
+            messages.error(request, "Неправильное имя пользователя или пароль.")
     form = AuthenticationForm()
     return render(request=request, template_name="accounts/registration/login.html", context={"form": form})
 
 
 def logout_request(request):
     logout(request)
-    messages.info(request, _("You have successfully logged out."))
+    messages.info(request, _("Вы успешно вышли из системы."))
     return redirect("homepage")
 
 
@@ -89,22 +90,20 @@ def password_reset_request(request):
             associated_users = User.objects.filter(Q(email=data))
             if associated_users.exists():
                 for user in associated_users:
-                    subject = "Password Reset Requested"
+                    subject = "Запрос на сброс пароля"
                     email_template_name = "accounts/registration/password_reset_email.txt"
                     c = {
                         "email": user.email,
-                        'domain': 'ilvits.com',
-                        'site_name': 'Website',
+                        'domain': 'icecream.ilvits.com',
+                        'site_name': '500 Эскимо',
                         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                         "user": user,
                         'token': default_token_generator.make_token(user),
-                        'protocol': 'http',
+                        'protocol': 'https',
                     }
                     email = render_to_string(email_template_name, c)
-                    try:
-                        send_mail(subject, email, 'admin@ilvits.com', [user.email], fail_silently=False)
-                    except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
+                    send_reset_form.delay(user, subject, email)
+                    # send_mail(subject, email, 'admin@ilvits.com', [user.email], fail_silently=False)
                     return redirect("/accounts/password_reset/done/")
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="accounts/registration/password_reset_form.html",
