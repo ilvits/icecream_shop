@@ -1,15 +1,49 @@
 import os
 from pathlib import Path
+import environ
 
-SITE_ID = 1
-DEBUG = True
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yufon86u)-6k-@&94gj_oee_2#9*y-ab$^4l4$(0b79am#dwmh'
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# False if not in os.environ because of casting above
+DEBUG = env('DEBUG')
+
+# Raises Django's ImproperlyConfigured
+# exception if SECRET_KEY not in os.environ
+SECRET_KEY = env('SECRET_KEY')
+
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+# Parse database connection url strings
+# like psql://user:pass@127.0.0.1:8458/db
+DATABASES = {
+    # read os.environ['DATABASE_URL'] and raises
+    # ImproperlyConfigured exception if not found
+    #
+    # The db() method is an alias for db_url().
+    'default': env.db()
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'icecream',
+#         'USER': 'icecream',
+#         'PASSWORD': '5123789LviTs',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
+
+SITE_ID = 1
 
 # CELERY SETTINGS
 BROKER_URL = 'redis://localhost:6379/0'
@@ -19,7 +53,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['tsoyilya.com', 'localhost', '127.0.0.1']
 
 # 'icecream.ilvits.com', '45.156.25.29', 'localhost', '127.0.0.1'
 
@@ -108,7 +142,7 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = 'admin@ilvits.com'
+DEFAULT_FROM_EMAIL = 'admin@tsoyilya.com'
 #
 # CACHES = {
 #     'default': {
@@ -153,21 +187,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'myshop.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'icecream',
-        'USER': 'icecream',
-        'PASSWORD': '5123789LviTs',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
